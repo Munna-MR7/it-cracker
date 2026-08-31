@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-title" content="IT Cracker">
     <meta name="description" content="BCS, NTRCA, Bank & Govt IT Officer Exam Preparation App with AI Quiz and Leaderboard by Mainul Islam Munna">
     
-    <!-- Clean Favicon Links -->
+    <!-- Favicon Links -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>">
     <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg">
     
@@ -610,21 +610,15 @@
         </div>
     </div>
 
-    <!-- PWA Service Worker Inline Registration Script -->
+    <!-- PWA Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'it-cracker-v6';
-                    self.addEventListener('install', (event) => {
-                        self.skipWaiting();
-                    });
-                    self.addEventListener('activate', (event) => {
-                        event.waitUntil(clients.claim());
-                    });
-                    self.addEventListener('fetch', (event) => {
-                        event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
-                    });
+                    const CACHE_NAME = 'it-cracker-v7';
+                    self.addEventListener('install', (event) => { self.skipWaiting(); });
+                    self.addEventListener('activate', (event) => { event.waitUntil(clients.claim()); });
+                    self.addEventListener('fetch', (event) => { event.respondWith(fetch(event.request).catch(() => caches.match(event.request))); });
                 `;
                 const blob = new Blob([swCode], { type: 'application/javascript' });
                 navigator.serviceWorker.register(URL.createObjectURL(blob)).then(reg => {
@@ -712,9 +706,7 @@
         };
 
         window.handleUserLogout = async function() {
-            try {
-                await signOut(auth);
-            } catch(e){}
+            try { await signOut(auth); } catch(e){}
             document.getElementById('navUserName').innerText = "লগইন / সাইন আপ";
             document.getElementById('authFormView').classList.remove('hidden');
             document.getElementById('userProfileView').classList.add('hidden');
@@ -856,7 +848,7 @@
         };
     </script>
 
-    <!-- COMPREHENSIVE ICT SYLLABUS DATABASE & MAIN JS -->
+    <!-- COMPREHENSIVE ICT SYLLABUS DATABASE & MASTER QUESTION BANK -->
     <script>
         const ICT_SYLLABUS = [
             {
@@ -1014,7 +1006,178 @@
             }
         ];
 
-        // API Key (Fallback Managed)
+        // REAL BCS & NTRCA ICT QUESTION BANK DATABASE
+        const MASTER_QUESTION_DATABASE = {
+            "computer_basics": [
+                {
+                    q: "কম্পিউটারের ১ম প্রজন্মের (1st Generation) কম্পিউটারে প্রধান উপাদান হিসেবে ব্যবহৃত হতো কোনটি?",
+                    opts: ["ট্রানজিস্টর (Transistor)", "ভ্যাকুয়াম টিউব (Vacuum Tube)", "ইনটিগ্রেটেড সার্কিট (IC)", "মাইক্রোপ্রসেসর"],
+                    ans: 1,
+                    exp: "প্রথম প্রজন্মের কম্পিউটারে (১৯৪৬-১৯৫৯) ইলেকট্রনিক ভালভ বা ভ্যাকুয়াম টিউব প্রধান উপাদান হিসেবে ব্যবহৃত হতো (যেমন: ENIAC, UNIVAC)।"
+                },
+                {
+                    q: "ইনপুট এবং আউটপুট উভয় ডিভাইস হিসেবে নিচের কোনটি কাজ করে?",
+                    opts: ["মাউস", "টাচ স্ক্রিন (Touch Screen)", "কীবোর্ড", "প্লটার"],
+                    ans: 1,
+                    exp: "টাচ স্ক্রিন ব্যবহারকারীর ছোঁয়া গ্রহণ করে ইনপুট নেয় এবং একই স্ক্রিনে ভিজ্যুয়াল ডিসপ্লে দেখায় বলে এটি ইনপুট ও আউটপুট উভয় ডিভাইস।"
+                },
+                {
+                    q: "১ গিগাবাইট (1 GB) সমান কত মেগাবাইট (MB)?",
+                    opts: ["১০০০ MB", "১০২৪ MB", "৫১২ MB", "২০৪৮ MB"],
+                    ans: 1,
+                    exp: "মেমোরি পরিমাপের বাইনারি হিস্ট্রি অনুযায়ী ১ গিগাবাইট = ১০২৪ মেগাবাইট (1024 MB)।"
+                },
+                {
+                    q: "ইউনিকোড (Unicode) এর মোট বিট সংখ্যা কত?",
+                    opts: ["৮ বিট", "১৬ বিট", "৩২ বিট", "৬৪ বিট"],
+                    ans: 1,
+                    exp: "ইউনিকোড হলো ১৬ বিটের (২ বাইট) কোডিং ব্যবস্থা, যার মাধ্যমে বিশ্বের সমস্ত ভাষার বর্ণমালাকে কোডভুক্ত করা যায় (৬৫,৫৩৬টি অক্ষর)।"
+                },
+                {
+                    q: "OCR এর পূর্ণরূপ কোনটি?",
+                    opts: ["Optical Character Reader", "Optimal Card Reader", "Optical Control Register", "Operating Code Register"],
+                    ans: 0,
+                    exp: "OCR এর পূর্ণরূপ Optical Character Reader (বা Optical Character Recognition)। এটি হাতে লেখা বা ছাপা টেক্সট রিড করতে পারে।"
+                }
+            ],
+            "digital_logic": [
+                {
+                    q: "বাইনারি সংখ্যা (1101)₂ এর সমতুল্য দশমিক (Decimal) মান কত?",
+                    opts: ["11", "12", "13", "15"],
+                    ans: 2,
+                    exp: "(1101)₂ = (1×2³) + (1×2²) + (0×2¹) + (1×2⁰) = 8 + 4 + 0 + 1 = 13।"
+                },
+                {
+                    q: "নিচের কোনটি ডিজিটাল সার্কিটের সার্বজনীন (Universal) গেট?",
+                    opts: ["AND গেট", "OR গেট", "NAND গেট", "XOR গেট"],
+                    ans: 2,
+                    exp: "NAND এবং NOR গেটকে সার্বজনীন বা Universal গেট বলা হয়, কারণ এই গেট দিয়ে অন্য সকল মৌলিক লজিক গেট তৈরি করা সম্ভব।"
+                },
+                {
+                    q: "একটি হাফ এডার (Half Adder) সার্কিট দিয়ে কয়টি বিট যোগ করা যায়?",
+                    opts: ["২টি বিট", "৩টি বিট", "৪টি বিট", "৮টি বিট"],
+                    ans: 0,
+                    exp: "হাফ এডার সার্কিট দুটি বাইনারি বিট যোগ করে সম (Sum) এবং ক্যারি (Carry) আউটপুট তৈরি করে।"
+                }
+            ],
+            "architecture": [
+                {
+                    q: "কম্পিউটার প্রসেসরের অভ্যন্তরীণ সবচেয়ে দ্রুততম মেমোরি কোনটি?",
+                    opts: ["RAM", "Cache Memory", "Register", "Hard Disk"],
+                    ans: 2,
+                    exp: "প্রসেসরের ভেতরে থাকা রেজিস্টার (Register) হলো কম্পিউটারের সবচেয়ে দ্রুততম মেমোরি ব্যবস্থা।"
+                },
+                {
+                    q: "সিপিইউ (CPU) এর প্রধান অংশ কয়টি?",
+                    opts: ["২টি", "৩টি", "৪টি", "৫টি"],
+                    ans: 1,
+                    exp: "সিপিইউ এর প্রধান ৩টি অংশ হলো: ১. ALU (Arithmetic Logic Unit), ২. Control Unit (CU), এবং ৩. Register Array।"
+                }
+            ],
+            "programming_languages": [
+                {
+                    q: "C প্রোগ্রামিং ভাষায় ইনপুট/আউটপুট ফাংশনের জন্য কোন হেডার ফাইল ব্যবহার করা হয়?",
+                    opts: ["<math.h>", "<stdio.h>", "<conio.h>", "<stdlib.h>"],
+                    ans: 1,
+                    exp: "stdio.h (Standard Input Output Header File) ফাইলটি printf(), scanf() ইত্যাদি মৌলিক ফাংশনের জন্য প্রয়োজনীয়।"
+                },
+                {
+                    q: "অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং (OOP) এর মূল স্তম্ভ কোনটি নয়?",
+                    opts: ["Encapsulation", "Inheritance", "Polymorphism", "Compilation"],
+                    ans: 3,
+                    exp: "OOP এর প্রধান ৪টি স্তম্ভ হলো Abstraction, Encapsulation, Inheritance এবং Polymorphism। Compilation এটি প্রোগ্রামের অনুবাদ প্রক্রিয়া।"
+                }
+            ],
+            "data_structure_algorithm": [
+                {
+                    q: "LIFO (Last In First Out) নীতি অনুসরণ করে কোন ডেটা স্ট্রাকচার?",
+                    opts: ["Queue", "Stack", "Array", "Linked List"],
+                    ans: 1,
+                    exp: "স্ট্যাক (Stack) LIFO নীতি মেনে চলে, অর্থাৎ যে উপাদানটি সবার শেষে স্ট্যাকে প্রবেশ করানো হয়, সেটি সবার আগে বের করা হয়।"
+                },
+                {
+                    q: "বাইনারি সার্চ (Binary Search) অ্যালগরিদমের টাইম কমপ্লেক্সিটি (Time Complexity) কত?",
+                    opts: ["O(n)", "O(n²)", "O(log n)", "O(1)"],
+                    ans: 2,
+                    exp: "সাজানো (Sorted) অ্যারেতে বাইনারি সার্চ প্রতি ধাপে অর্ধেক এলিমেন্ট বাদ দেয়, তাই এর কমপ্লেক্সিটি O(log n)।"
+                }
+            ],
+            "operating_system": [
+                {
+                    q: "নিচের কোনটি একটি ওপেন সোর্স (Open Source) অপারেটিং সিস্টেম?",
+                    opts: ["MS Windows", "macOS", "Linux", "iOS"],
+                    ans: 2,
+                    exp: "লিনাক্স (Linux) একটি বিনামূল্যে ব্যবহারযোগ্য ওপেন সোর্স অপারেটিং সিস্টেম, যার সোর্স কোড সকলের জন্য উন্মুক্ত।"
+                },
+                {
+                    q: "অপারেটিং সিস্টেমে ডেডলক (Deadlock) প্রতিরোধের জন্য জনপ্রিয় অ্যালগরিদম কোনটি?",
+                    opts: ["Banker's Algorithm", "Dijkstra Algorithm", "Kruskal Algorithm", "Round Robin"],
+                    ans: 0,
+                    exp: "ব্যাংকার্স অ্যালগরিদম (Banker's Algorithm) প্রসেসের রিসোর্স বরাদ্দ নিরাপদ কিনা তা পরীক্ষা করে ডেডলক প্রতিরোধ করে।"
+                }
+            ],
+            "dbms": [
+                {
+                    q: "রিল্যাশনাল ডেটাবেজে কোনো টেবিলের প্রতিটি রেকর্ডকে অনন্যভাবে চিহ্নিত করে কোনটি?",
+                    opts: ["Foreign Key", "Primary Key", "Candidate Key", "Super Key"],
+                    ans: 1,
+                    exp: "Primary Key ডেটাবেজ টেবিলের প্রতিটি সারিকে ইউনিক বা অনন্যভাবে চিহ্নিত করে এবং এটি ফাঁকা (Null) হতে পারে না।"
+                },
+                {
+                    q: "SQL কমান্ডে টেবিল থেকে তথ্য তুলে আনার জন্য কোনটি ব্যবহৃত হয়?",
+                    opts: ["INSERT", "UPDATE", "SELECT", "DELETE"],
+                    ans: 2,
+                    exp: "SELECT স্টেটমেন্ট ব্যবহার করে ডেটাবেজ টেবিল থেকে নির্দিষ্ট ডাটা কুয়েরি করে নিয়ে আসা হয়।"
+                }
+            ],
+            "networking_security": [
+                {
+                    q: "OSI (Open Systems Interconnection) রেফারেন্স মডেলে মোট কয়টি লেয়ার রয়েছে?",
+                    opts: ["৪টি", "৫টি", "৭টি", "৮টি"],
+                    ans: 2,
+                    exp: "OSI মডেলে ৭টি লেয়ার রয়েছে (Physical, Data Link, Network, Transport, Session, Presentation, Application)।"
+                },
+                {
+                    q: "IPv4 এড্রেস কত বিটের হয়ে থাকে?",
+                    opts: ["১৬ বিট", "৩২ বিট", "৬৪ বিট", "১২৮ বিট"],
+                    ans: 1,
+                    exp: "IPv4 এড্রেস ৩২ বিট বা ৪ বাইটের হয়। অপরদিকে IPv6 এড্রেস ১২৮ বিটের হয়।"
+                }
+            ],
+            "software_engineering": [
+                {
+                    q: "সফটওয়্যার ডেভেলপমেন্ট লাইফ সাইকেল (SDLC) এর প্রথম ধাপ কোনটি?",
+                    opts: ["Coding", "Testing", "Requirements Analysis", "Deployment"],
+                    ans: 2,
+                    exp: "এসডিএলসির প্রথম ও মৌলিক ধাপ হলো প্রয়োজনীয়তা বিশ্লেষণ বা Requirement Analysis & Feasibility Study।"
+                }
+            ],
+            "web_tech_telecom": [
+                {
+                    q: "HTTP (Hypertext Transfer Protocol) এর জন্য ডিফল্ট পোর্ট নম্বর কত?",
+                    opts: ["২১", "২৫", "৮০", "৪৪৩"],
+                    ans: 2,
+                    exp: "সাধারণ HTTP যোগাযোগের জন্য পোর্ট ৮০ ব্যবহার করা হয়। আর সিকিউর HTTPS এর জন্য পোর্ট ৪৪৩ ব্যবহৃত হয়।"
+                }
+            ],
+            "modern_tech_ai": [
+                {
+                    q: "কৃত্রিম বুদ্ধিমত্তা (Artificial Intelligence) এর জনক কাকে বলা হয়?",
+                    opts: ["অ্যালান টিউরিং", "জন ম্যাককার্থি", "চার্লস ব্যাবেজ", "বিল গেটস"],
+                    ans: 1,
+                    exp: "জন ম্যাককার্থি (John McCarthy)-কে কৃত্রিম বুদ্ধিমত্তার জনক বলা হয়, কারণ ১৯৫৬ সালে তিনিই প্রথম 'AI' শব্দটি প্রবর্তন করেন।"
+                }
+            ],
+            "ms_office_abbreviations": [
+                {
+                    q: "MS Word-এ ডকুমেন্টের সম্পূর্ণ লেখা একবারে সিলেক্ট করার শর্টকাট কী কোনটি?",
+                    opts: ["Ctrl + C", "Ctrl + S", "Ctrl + A", "Ctrl + V"],
+                    ans: 2,
+                    exp: "Ctrl + A চেপে ফাইলের পুরো টেক্সট সিলেক্ট করা হয়।"
+                }
+            ]
+        };
+
         const apiKey = "AQ.Ab8RN6Kr6kT3m9ta_sGYopYFYh3pQarGmtCbGlj6xgTjyeocCA"; 
         
         let selectedExamTarget = 'bcs';
@@ -1187,65 +1350,34 @@
             generateQuestions();
         }
 
-        // SMART LOCAL QUESTION GENERATOR ENGINE (Fail-Safe Offline Mode)
-        function generateLocalFallbackQuestions(chapterTitle, topicTitle, count, format) {
+        // ACCURATE MASTER BCS QUESTION FALLBACK GENERATOR
+        function getRealMasterQuestions(chapterId, count, format, chapterTitle, rawTopic) {
             const questions = [];
-            
-            if (format === 'mcq') {
-                const sampleTemplates = [
-                    {
-                        q: `${topicTitle} এর সাথে নিচের কোনটি সরাসরি সম্পর্কিত?`,
-                        opts: ["সিস্টেম বাস ও রেজিস্টার", "লজিক্যাল এড্রেসিং ইউনিট", "কন্ট্রোল প্রসেসিং প্রটোকল", "ডাটা ডিকশনারি ভিউ"],
-                        ans: 0,
-                        exp: `${topicTitle} প্রধানত হার্ডওয়্যার আর্কিটেকচার এবং মেমোরি এড্রেসিং ব্যবস্থার সিস্টেম বাস বা রেজিস্টার লেভেলে সরাসরি কাজ করে।`
-                    },
-                    {
-                        q: `বিসিএস ও এনটিআরসিএ পরীক্ষায় ${topicTitle} বিষয়ে বহুল আলোচিত প্রযুক্তি কোনটি?`,
-                        opts: ["হাইপার-থ্রেডিং ও পাইপলাইনিং", "ফ্ল্যাশ ফাইল প্রটোকল", "ডিস্ট্রিবিউটেড কোয়েরি প্রসেসর", "ম্যানুয়াল মেমোরি ম্যাপিং"],
-                        ans: 0,
-                        exp: "প্রসেসর ও আর্কিটেকচার সম্পর্কিত বিসিএস লিখিত ও প্রিলিমিনারিতে হাইপার-থ্রেডিং ও পাইপলাইনিং প্রযুক্তি সবচেয়ে গুরুত্বপূর্ণ।"
-                    },
-                    {
-                        q: `নিচের কোন বৈশিষ্ট্যটি ${topicTitle} এর ক্ষেত্রে প্রযোজ্য?`,
-                        opts: ["উচ্চমাত্রার ডাটা প্রসেসিং গতি", "অপ্রয়োজনীয় ব্যান্ডউইথ খরচ", "অ্যানালগ ডাটা ট্র্যাকিং", "শুধুমাত্র অফলাইন সঞ্চয়স্থান"],
-                        ans: 0,
-                        exp: "কম্পিউটিং ব্যবস্থায় উচ্চমাত্রার ডাটা প্রসেসিং এবং সঠিক থ্রুপুট বজায় রাখাই এর মূল কাজ।"
-                    },
-                    {
-                        q: `আইসিটি সরকারি জব পরীক্ষায় ${topicTitle} এর সবচেয়ে গুরুত্বপূর্ণ উপাদান কী?`,
-                        opts: ["সঠিক প্রাইমারি স্ট্রাকচার ও লজিক", "অতিরিক্ত অপারেটিং সিস্টেম লেয়ার", "বাহ্যিক প্রিন্টার পেরিফেরাল", "অ্যানালগ মোডেম ডিভাইস"],
-                        ans: 0,
-                        exp: "আইটি অফিসার ও বিসিএস লিখিত পরীক্ষায় মৌলিক লজিক এবং সিস্টেমেটিক স্ট্রাকচার থেকে প্রশ্ন সবচেয়ে বেশি আসে।"
-                    },
-                    {
-                        q: `কম্পিউটার সায়েন্সে ${topicTitle} এর ডাটা ট্রানজিশন কীভাবে ঘটে?`,
-                        opts: ["বাইনারি ও লজিক্যাল সিগন্যাল ডিরেকশনে", "সরাসরি এনক্রিপ্টেড ওভেনে", "শুধুমাত্র মেকানিক্যাল গিয়ারে", "অ্যানালগ কেবলের মাধ্যমে"],
-                        ans: 0,
-                        exp: "ডিজিটাল কম্পিউটারের যেকোনো প্রসেসিং বাইনারি লজিক এবং ডিজিটাল সিগন্যাল ট্রানজিশনের মাধ্যমে সম্পাদিত হয়।"
-                    }
-                ];
+            const displayTopic = (rawTopic === "All Topics" || !rawTopic) ? chapterTitle : rawTopic;
+            const pool = MASTER_QUESTION_DATABASE[chapterId] || MASTER_QUESTION_DATABASE["computer_basics"];
 
+            if (format === 'mcq') {
                 for (let i = 0; i < count; i++) {
-                    const template = sampleTemplates[i % sampleTemplates.length];
+                    const item = pool[i % pool.length];
                     questions.push({
                         id: i + 1,
-                        question: `[প্রশ্ন ${i + 1}] ${template.q}`,
-                        options: template.opts,
-                        correctAnswerIndex: template.ans,
-                        explanation: template.exp
+                        question: item.q,
+                        options: item.opts,
+                        correctAnswerIndex: item.ans,
+                        explanation: item.exp
                     });
                 }
             } else {
                 for (let i = 0; i < count; i++) {
                     questions.push({
                         id: i + 1,
-                        question: `${topicTitle} বলতে কী বোঝায়? বিসিএস/এনটিআরসিএ পরীক্ষার আলোকে ${topicTitle} এর প্রধান সুবিধা ও গঠন ব্যাখ্যা করুন।`,
+                        question: `${displayTopic} বিষয় থেকে বিসিএস/এনটিআরসিএ লিখিত পরীক্ষার গুরুত্বপূর্ণ প্রশ্ন (বিগত ও সম্ভাব্য)`,
                         marks: "৫",
-                        modelAnswer: `${topicTitle} হলো কম্পিউটার বিজ্ঞান ও তথ্যপ্রযুক্তির একটি অত্যন্ত গুরুত্বপূর্ণ মৌলিক বিষয়।\n\n• প্রধান উপাদানসমূহ:\n১. দ্রুত ডাটা প্রক্রিয়াকরণ এবং প্রসেসিং গতি বৃদ্ধি।\n২. মেমোরি ও সিস্টেম রিসোর্সের সঠিক বন্টন।\n৩. নেটওয়ার্ক বা সিস্টেমের নির্ভরযোগ্যতা বৃদ্ধি।\n\n• পরীক্ষার জন্য সংক্ষিপ্ত বিশ্লেষণ:\nবিসিএস এবং সরকারি ব্যাংক আইটি অফিসার লিখিত পরীক্ষায় এই সম্পর্কিত বিষয় থেকে প্রায়শই পার্থক্য বা সুবিধা জানতে চাওয়া হয়। সংক্ষিপ্ত ও পয়েন্ট আকারে উত্তর উপস্থাপন করলে পূর্ণ নম্বর পাওয়া সম্ভব।`,
+                        modelAnswer: `${displayTopic} হলো কম্পিউটার সায়েন্সের একটি কেন্দ্রীয় বিষয়।\n\n• গুরুত্বপূর্ণ পয়েন্টসমূহ:\n১. লজিক্যাল গঠন ও প্রসেসিং ধারের সঠিক ধারণা।\n২. ডাটা ট্রান্সমিশন ও সিস্টেমে মেমোরি বন্টন।\n৩. প্রয়োগক্ষেত্র ও বাস্তব জীবনের কর্মদক্ষতা।\n\n• লিখিত পরীক্ষার টেকনিক:\nসংক্ষিপ্ত ও স্পষ্ট প্যারাগ্রাফে উত্তর লিখুন। প্রয়োজনে ফ্লোচার্ট বা ব্লক ডায়গ্রাম উপস্থাপন করলে পূর্ণ নম্বর পাওয়া যায়।`,
                         keyPoints: [
-                            `${topicTitle} এর সঠিক সংজ্ঞা ও পরিভাষা`,
-                            "গঠনগত আর্কিটেকচার ও মূল ডায়াগ্রাম",
-                            "বাস্তব জীবনে এর প্রয়োগ ও সুবিধা"
+                            `${displayTopic} এর সংজ্ঞায়ন ও উৎপত্তি`,
+                            "প্রযুক্তিগত বৈশিষ্ট্য ও আর্কিটেকচার",
+                            "সুবিধা, অসুবিধা এবং বাস্তব জীবনের ক্ষেত্র"
                         ]
                     });
                 }
@@ -1256,7 +1388,9 @@
         async function generateQuestions() {
             const chapterId = document.getElementById('chapterSelect').value;
             const chapterObj = ICT_SYLLABUS.find(c => c.id === chapterId);
-            const topic = document.getElementById('topicSelect').value;
+            const rawTopic = document.getElementById('topicSelect').value;
+            const topic = (rawTopic === "All Topics" || !rawTopic) ? chapterObj.title : rawTopic;
+
             let count = parseInt(document.getElementById('questionCount').value) || 10;
             count = Math.min(Math.max(count, 1), 100);
 
@@ -1267,13 +1401,17 @@
             document.getElementById('loadingSection').classList.remove('hidden');
             document.getElementById('loadingStatusText').innerText = `[${targetExamName}] মানদণ্ডে ${chapterObj.title} এর ${topic} টপিকের ওপর ${count}টি ${format === 'mcq' ? 'MCQ' : 'লিখিত (Written)'} প্রশ্ন সংকলন করা হচ্ছে...`;
 
-            const systemPrompt = `You are an expert ICT Exam Setter for Bangladesh Competitive Exams (BCS, NTRCA Lecturer, IT Officer, Bank Exams) working for the platform "IT Cracker". Language: Bengali. Return structured output.`;
+            const systemPrompt = `You are an expert ICT Exam Setter for Bangladesh Competitive Exams (BCS, NTRCA Lecturer, IT Officer, Bank Exams) working for the platform "IT Cracker". Language: Bengali. Return valid JSON matching schema. Do not use generic words like 'All Topics' in questions.`;
 
             let userQuery = "";
             let responseSchema = {};
 
             if (format === 'mcq') {
-                userQuery = `Generate ${count} MCQ questions in Bengali for ${targetExamName}, Chapter: ${chapterObj.title}, Topic: ${topic}`;
+                userQuery = `Generate ${count} real BCS and NTRCA ICT standard MCQ questions in Bengali for:
+Exam: ${targetExamName}
+Chapter: ${chapterObj.title}
+Specific Topic: ${topic}`;
+
                 responseSchema = {
                     type: "OBJECT",
                     properties: {
@@ -1295,7 +1433,11 @@
                     required: ["questions"]
                 };
             } else {
-                userQuery = `Generate ${count} Written Questions & Model Answers in Bengali for ${targetExamName}, Chapter: ${chapterObj.title}, Topic: ${topic}`;
+                userQuery = `Generate ${count} BCS Written ICT questions with model answers in Bengali for:
+Exam: ${targetExamName}
+Chapter: ${chapterObj.title}
+Specific Topic: ${topic}`;
+
                 responseSchema = {
                     type: "OBJECT",
                     properties: {
@@ -1329,7 +1471,7 @@
 
             let success = false;
 
-            // TRY ONLINE GEMINI API FIRST
+            // TRY GEMINI ONLINE GENERATION
             try {
                 const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
                 const res = await fetch(endpoint, {
@@ -1353,12 +1495,12 @@
                     }
                 }
             } catch (err) {
-                console.log("Online Gemini AI unavailable, switching to local question engine...");
+                console.log("Online AI unavailable, using Master BCS Offline Question Database...");
             }
 
-            // SMART FAIL-SAFE: IF API FAILS OR REJECTS, GENERATE HIGH QUALITY LOCAL QUESTIONS INSTANTLY
+            // FAIL-SAFE MASTER BCS QUESTION ENGINE
             if (!success) {
-                currentQuestions = generateLocalFallbackQuestions(chapterObj.title, topic, count, format);
+                currentQuestions = getRealMasterQuestions(chapterId, count, format, chapterObj.title, rawTopic);
             }
 
             startExamSession(chapterObj.title, topic, format);
@@ -1622,7 +1764,7 @@
 
         async function generateAIAnalysis(total, correct, wrong, score) {
             const analysisText = document.getElementById('aiAnalysisText');
-            analysisText.innerText = `আপনার প্রাপ্ত স্কোর ${score}/${total}। বিসিএস ও আইটি অফিসার পরীক্ষার প্রস্তুতি জোরদার করতে ভুল হওয়া প্রশ্নগুলোর অধ্যায় থেকে পুনরায় টেক্সটবুক রিভিশন দিন।`;
+            analysisText.innerText = `আপনার অর্জিত স্কোর ${score}/${total}। বিসিএস প্রিলিমিনারি ও আইটি অফিসার লিখিত পরীক্ষার জন্য এই বিষয়ের মূল কনসেপ্ট ও বিগত বছরের প্রশ্নসমূহ বারবার রিভিশন দেওয়া জরুরি।`;
         }
 
         async function explainWithAI(qIndex, format) {
@@ -1638,7 +1780,7 @@
                     </div>
                     <div class="prose text-slate-700 text-sm leading-relaxed space-y-2">
                         <p class="font-bold text-green-700">ব্যাখ্যা ও কনসেপ্ট বিশ্লেষণ:</p>
-                        <p>${q.explanation || q.modelAnswer || 'উক্ত বিষয়টির বিস্তারিত তথ্য বিসিএস ও এনটিআরসিএ সিলেবাসের মানদণ্ডে তৈরি।'}</p>
+                        <p>${q.explanation || q.modelAnswer || 'বিসিএস ও এনটিআরসিএ সিলেবাসের মানদণ্ডে এই প্রশ্নের ব্যাখ্যা প্রস্তুত করা হয়েছে।'}</p>
                     </div>
                 </div>
             `;
@@ -1654,7 +1796,7 @@
                 utterance.lang = 'bn-BD';
                 window.speechSynthesis.speak(utterance);
             } else {
-                alert("আপনার ব্রাউজারে স্পিচ সাপোর্ট উপলব্ধ নেই।");
+                alert("স্পিচ ফিচারটি আপনার ব্রাউজারে উপলব্ধ নয়।");
             }
         }
 
