@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IT Cracker - BCS, NTRCA & IT Exam Prep</title>
+    
+    <!-- Web App / PWA Meta Tags -->
+    <meta name="theme-color" content="#075985">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IT Cracker">
+    
+    <!-- Custom Unique SVG Favicon & App Icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>">
+    
+    <!-- PWA Manifest Dynamic Generation -->
+    <script>
+        const manifestData = {
+            "name": "IT Cracker",
+            "short_name": "IT Cracker",
+            "start_url": ".",
+            "display": "standalone",
+            "background_color": "#075985",
+            "theme_color": "#075985",
+            "icons": [{
+                "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>",
+                "sizes": "192x192 512x512",
+                "type": "image/svg+xml"
+            }]
+        };
+        const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = URL.createObjectURL(manifestBlob);
+        document.head.appendChild(manifestLink);
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Hind Siliguri) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Hind Siliguri', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; webkit-tap-highlight-color: transparent; }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between select-none">
+
+    <!-- Live Update Toast Bar -->
+    <div id="liveUpdateToast" class="hidden sticky top-0 z-50 bg-amber-500 text-slate-900 px-4 py-2.5 shadow-xl flex items-center justify-between text-xs sm:text-sm font-bold">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-bell animate-bounce"></i>
+            <span id="toastVersionBadge">লাইভ নতুন আপডেট প্রকাশিত হয়েছে!</span>
+        </div>
+        <button onclick="window.location.reload()" class="px-3 py-1 bg-slate-900 text-yellow-300 rounded-lg text-xs font-bold">
+            রিফ্রেশ করুন
+        </button>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-brand-900 via-slate-900 to-brand-800 text-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- App Logo & Name Header -->
+            <div class="flex items-center space-x-3.5 space-x-reverse cursor-pointer" onclick="resetApp()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 text-slate-900 flex items-center justify-center font-black text-xl shadow-md border border-yellow-200 flex-shrink-0">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div class="ml-2">
+                    <h1 class="font-extrabold text-xl tracking-wide leading-tight flex items-center gap-2">
+                        <span>IT Cracker</span>
+                        <span class="text-[10px] bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full font-black">PRO</span>
+                    </h1>
+                    <p class="text-[11px] text-brand-100 hidden sm:block">বিসিএস, এনটিআরসিএ ও আইটি জব এক্সাম ক্র্যাকার</p>
+                </div>
+            </div>
+            
+            <!-- Header Right Action Buttons -->
+            <div class="flex items-center space-x-2">
+                <button id="userAuthNavBtn" onclick="openUserAuthModal()" class="px-3 py-1.5 bg-brand-800 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition border border-brand-600 flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-user-circle text-yellow-400 text-sm"></i>
+                    <span id="navUserName">লগইন / সাইন আপ</span>
+                </button>
+
+                <button onclick="openAdminModal()" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-yellow-400 text-xs font-bold rounded-xl transition border border-slate-600 flex items-center gap-1">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span class="hidden sm:inline">এডমিন</span>
+                </button>
+
+                <button onclick="resetApp()" class="px-3 py-1.5 bg-brand-700/60 hover:bg-brand-600 text-xs font-semibold rounded-xl border border-brand-500 flex items-center gap-1">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Scrolling Marquee News Bulletin Banner -->
+    <div id="contestMarqueeBar" class="hidden bg-slate-900 text-yellow-300 border-b border-amber-500/40 px-4 py-2 text-xs font-bold overflow-hidden flex items-center">
+        <span class="bg-red-600 text-white px-2 py-0.5 rounded font-black text-[10px] mr-3 flex-shrink-0 animate-pulse">
+            <i class="fa-solid fa-bullhorn mr-1"></i> LIVE QUIZ
+        </span>
+        <div class="overflow-hidden w-full relative">
+            <div id="marqueeText" class="animate-marquee">
+                বিশেষ লাইভ কুইজ প্রতিযোগিতা চলমান রয়েছে! এখনই অংশগ্রহণ করে আপনার র‍্যাঙ্কিং মেধা তালিকায় দেখে নিন।
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Body -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Live Contest Announcement Banner -->
+        <div id="liveContestNotice" class="hidden bg-gradient-to-r from-red-700 via-purple-700 to-brand-800 text-white p-5 rounded-3xl mb-6 shadow-xl space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-2xl animate-bounce">
+                        <i class="fa-solid fa-trophy text-yellow-300"></i>
+                    </div>
+                    <div>
+                        <span class="px-2.5 py-0.5 bg-yellow-400 text-slate-950 font-black rounded-md text-[10px] uppercase tracking-wider">
+                            ACTIVE LIVE CONTEST
+                        </span>
+                        <h4 class="font-extrabold text-base sm:text-lg mt-0.5" id="liveContestTitle">বিশেষ আইসিটি লাইভ কুইজ প্রতিযোগিতা</h4>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950/60 px-3.5 py-1.5 rounded-xl border border-yellow-400/30 text-xs font-bold text-yellow-300 flex items-center gap-2">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>শেষ সময়: <span id="contestDeadlineText" class="text-white">আজ রাত ১১:৫৯ মি.</span></span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between flex-wrap gap-2">
+                <p class="text-xs text-slate-200 font-medium">সকলের সাথে সরাসরি পরীক্ষায় মেধা যাচাই করুন এবং আপনার অবস্থান লিডারবোর্ডে তুলে ধরুন।</p>
+                <div class="flex items-center gap-2">
+                    <button onclick="joinLiveContest()" class="px-6 py-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black rounded-xl text-xs shadow-lg transition transform hover:scale-105">
+                        <i class="fa-solid fa-circle-play mr-1"></i> কুইজে অংশ নিন
+                    </button>
+                    <button onclick="openLeaderboardModal()" class="px-4 py-2.5 bg-slate-900/80 hover:bg-slate-900 text-white font-bold rounded-xl text-xs border border-white/20">
+                        <i class="fa-solid fa-ranking-star mr-1 text-yellow-400"></i> লিডারবোর্ড
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup Screen -->
+        <section id="setupSection" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-8 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px]">
+                <div class="max-w-4xl">
+                    <span class="px-3.5 py-1 bg-brand-100 text-brand-800 rounded-full text-xs font-bold inline-block mb-3 border border-brand-200">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-brand-600"></i> IT Prep with Munna - Smart Exam Engine
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3 leading-tight">
+                        আইসিটির যেকোনো পরীক্ষা, অধ্যায় ও লিখিত/এমসিকিউ প্রিপারেশন
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        বিসিএস লিখিত/প্রিলি, এনটিআরসিএ প্রভাষক/শিক্ষক নিবন্ধন, সরকারি আইটি অফিসার ও ব্যাংকের বিস্তৃত সিলেবাস বিশ্লেষণ করে যেকোনো অধ্যায় ও টপিক বেছে নিন। লিখিত প্রশ্ন অথবা ১-১০০টি MCQ কুইজ জেনারেট করে অনুশীলন করুন।
+                    </p>
+                </div>
+
+                <!-- TARGET EXAM SELECTOR BAR -->
+                <div class="mt-8 pt-6 border-t border-slate-200">
+                    <label class="block text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye text-red-500"></i>
+                        <span>১. টার্গেট পরীক্ষা নির্বাচন করুন (Target Exam Standard):</span>
+                    </label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" id="examTargetGroup">
+                        <button type="button" onclick="setExamTarget('bcs', this)" class="exam-target-btn active-target px-4 py-3 rounded-2xl border-2 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20 bg-brand-50 border-brand-600 text-brand-900 shadow-sm">
+                            <span class="flex items-center justify-between"><i class="fa-solid fa-award text-brand-600"></i> <i class="fa-solid fa-circle-check text-brand-600 text-xs"></i></span>
+                            <span>বিসিএস (প্রিলি ও লিখিত)</span>
+                        </button>
+
+                        <button type="button" onclick="setExamTarget('ntrca', this)" class="exam-target-btn px-4 py-3 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20">
+                            <span class="flex items-center justify-between"><i class="fa-solid fa-user-graduate text-purple-600"></i></span>
+                            <span>এনটিআরসিএ (স্কুল/কলেজ)</span>
+                        </button>
+
+                        <button type="button" onclick="setExamTarget('it_officer', this)" class="exam-target-btn px-4 py-3 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20">
+                            <span class="flex items-center justify-between"><i class="fa-solid fa-laptop-code text-blue-600"></i></span>
+                            <span>আইটি অফিসার/প্রোগ্রামার</span>
+                        </button>
+
+                        <button type="button" onclick="setExamTarget('bank', this)" class="exam-target-btn px-4 py-3 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20">
+                            <span class="flex items-center justify-between"><i class="fa-solid fa-building-columns text-emerald-600"></i></span>
+                            <span>ব্যাংক ও অন্যান্য পিএসসি</span>
+                        </button>
+
+                        <button type="button" onclick="setExamTarget('general', this)" class="exam-target-btn px-4 py-3 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20 col-span-2 sm:col-span-1">
+                            <span class="flex items-center justify-between"><i class="fa-solid fa-globe text-amber-600"></i></span>
+                            <span>সাধারণ প্রস্তুতি (Mixed)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Setup Form (Chapter, Topic, Question Format & Count) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 mt-6 border-t border-slate-100">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">
+                            <i class="fa-solid fa-book-bookmark text-brand-600 mr-1.5"></i> ২. অধ্যায় নির্বাচন করুন (Chapter)
+                        </label>
+                        <select id="chapterSelect" class="w-full p-3.5 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-500 focus:outline-none font-semibold text-slate-800 text-sm">
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">
+                            <i class="fa-solid fa-tags text-brand-600 mr-1.5"></i> ৩. নির্দিষ্ট টপিক (Sub-Topic)
+                        </label>
+                        <select id="topicSelect" class="w-full p-3.5 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-500 focus:outline-none font-semibold text-slate-800 text-sm">
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">
+                            <i class="fa-solid fa-list-ol text-brand-600 mr-1.5"></i> ৪. প্রশ্ন সংখ্যা (১-১০০)
+                        </label>
+                        <div class="flex items-center space-x-2">
+                            <input type="number" id="questionCount" min="1" max="100" value="10" 
+                                   class="w-full p-3 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-500 focus:outline-none font-extrabold text-slate-800 text-center text-base">
+                            <div class="flex gap-1">
+                                <button type="button" onclick="setQCount(10)" class="px-2.5 py-3 bg-slate-200 hover:bg-slate-300 rounded-xl text-xs font-bold">১০</button>
+                                <button type="button" onclick="setQCount(20)" class="px-2.5 py-3 bg-slate-200 hover:bg-slate-300 rounded-xl text-xs font-bold">২০</button>
+                                <button type="button" onclick="setQCount(50)" class="px-2.5 py-3 bg-slate-200 hover:bg-slate-300 rounded-xl text-xs font-bold">৫০</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Switch (MCQ vs Written) & Action Button -->
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-100 p-4 rounded-2xl">
+                    <div class="flex items-center space-x-3 w-full sm:w-auto">
+                        <label class="inline-flex items-center cursor-pointer flex-1 sm:flex-none">
+                            <input type="radio" name="formatSelect" value="mcq" checked class="sr-only peer">
+                            <div class="w-full text-center px-4 py-2.5 rounded-xl bg-white border border-slate-300 peer-checked:bg-brand-600 peer-checked:text-white peer-checked:border-brand-600 transition text-sm font-bold shadow-sm">
+                                <i class="fa-solid fa-list-check mr-1.5"></i> MCQ কুইজ মোড
+                            </div>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer flex-1 sm:flex-none">
+                            <input type="radio" name="formatSelect" value="written" class="sr-only peer">
+                            <div class="w-full text-center px-4 py-2.5 rounded-xl bg-white border border-slate-300 peer-checked:bg-purple-700 peer-checked:text-white peer-checked:border-purple-700 transition text-sm font-bold shadow-sm">
+                                <i class="fa-solid fa-pen-nib mr-1.5"></i> লিখিত (Written) প্রশ্ন ও উত্তর
+                            </div>
+                        </label>
+                    </div>
+
+                    <button id="generateBtn" onclick="generateQuestions()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-brand-600 to-brand-800 hover:from-brand-700 hover:to-brand-900 text-white font-extrabold rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-bolt text-yellow-300"></i>
+                        <span>পরীক্ষা জেনারেট করুন</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pre-defined Master Chapters Dashboard Grid -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-brand-600"></i>
+                    <span>সম্পূর্ণ আইসিটি সিলেবাসের ১২টি মাস্টার অধ্যায়</span>
+                </h3>
+                <div id="chapterGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading State Indicator -->
+        <section id="loadingSection" class="hidden py-20 text-center space-y-4">
+            <div class="inline-block relative">
+                <div class="w-20 h-20 border-4 border-brand-200 border-t-brand-600 rounded-full animate-spin"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <i class="fa-solid fa-bolt text-brand-600 text-2xl animate-pulse"></i>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-800">IT Cracker AI পরীক্ষা প্রস্তুত করছে...</h3>
+            <p id="loadingStatusText" class="text-slate-500 text-sm max-w-md mx-auto">নির্বাচিত পরীক্ষা মানদণ্ড ও টপিক বিশ্লেষণ করে মানসম্মত প্রশ্নমালা সংকলন করা হচ্ছে।</p>
+        </section>
+
+        <!-- Active Exam Section -->
+        <section id="activeQuizSection" class="hidden space-y-6">
+            <!-- Header Bar -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span id="activeExamBadge" class="px-3 py-1 bg-amber-100 text-amber-900 rounded-xl text-xs font-bold border border-amber-300">টার্গেট পরীক্ষা</span>
+                    <span id="activeChapterBadge" class="px-3 py-1 bg-brand-100 text-brand-900 rounded-xl text-xs font-bold">অধ্যায়</span>
+                    <span id="activeTopicBadge" class="px-3 py-1 bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold">টপিক</span>
+                </div>
+
+                <div class="flex items-center space-x-6 text-sm font-bold text-slate-700">
+                    <div id="timerContainer" class="flex items-center text-brand-700 bg-brand-50 px-3.5 py-1.5 rounded-xl border border-brand-200">
+                        <i class="fa-regular fa-clock mr-1.5 text-brand-600"></i>
+                        <span id="timerText">00:00</span>
+                    </div>
+                    <div id="progressContainer">
+                        <i class="fa-solid fa-check-double text-green-600 mr-1"></i>
+                        <span>অগ্রগতি: <span id="progressText" class="text-brand-600 font-bold">0/0</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="questionsContainer" class="space-y-6">
+            </div>
+
+            <!-- Submit Controls -->
+            <div id="quizFooterControls" class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex justify-between items-center">
+                <button onclick="resetApp()" class="px-5 py-2.5 border border-slate-300 text-slate-700 font-bold rounded-xl hover:bg-slate-50 text-sm">
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i> ব্যাক
+                </button>
+                <button id="submitQuizBtn" onclick="finishQuiz()" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-extrabold rounded-xl shadow-lg transition text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>পরীক্ষা জমা দিন (Submit Quiz)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Result Evaluation View -->
+        <section id="resultSection" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-10 text-center space-y-6">
+                <div class="w-20 h-20 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner border border-brand-200">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-900">পরীক্ষার ফলাফল রিপোর্ট</h2>
+                    <p id="resultSubTitle" class="text-slate-500 text-sm mt-1">IT Cracker - আপনার অর্জিত নম্বর ও বিষদ বিশ্লেষণ নিচে দেওয়া হলো</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="text-slate-500 text-xs font-bold mb-1">মোট প্রশ্ন</div>
+                        <div id="resTotal" class="text-2xl font-extrabold text-slate-800">0</div>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-2xl border border-green-200">
+                        <div class="text-green-700 text-xs font-bold mb-1">সঠিক উত্তর</div>
+                        <div id="resCorrect" class="text-2xl font-extrabold text-green-700">0</div>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-2xl border border-red-200">
+                        <div class="text-slate-500 text-xs font-bold mb-1">ভুল উত্তর (-০.২৫)</div>
+                        <div id="resWrong" class="text-2xl font-extrabold text-red-700">0</div>
+                    </div>
+                    <div class="p-4 bg-brand-50 rounded-2xl border border-brand-200">
+                        <div class="text-brand-800 text-xs font-bold mb-1">প্রাপ্ত নম্বর</div>
+                        <div id="resScore" class="text-2xl font-extrabold text-brand-800">0</div>
+                    </div>
+                </div>
+
+                <div id="aiAnalysisBox" class="text-left bg-gradient-to-r from-slate-900 to-brand-950 text-white p-6 rounded-2xl space-y-3">
+                    <h4 class="font-bold text-yellow-400 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-microchip"></i> AI পারফরম্যান্স এনালাইসিস ও পরামর্শ
+                    </h4>
+                    <p id="aiAnalysisText" class="text-slate-200 text-sm leading-relaxed">
+                        ফলাফল বিশ্লেষণ করা হচ্ছে...
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <button onclick="reviewAnswers()" class="px-6 py-3 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-slate-900 shadow">
+                        <i class="fa-solid fa-eye mr-1.5"></i> উত্তরপত্র রিভিউ করুন
+                    </button>
+                    <button onclick="resetApp()" class="px-6 py-3 bg-brand-600 text-white rounded-xl text-sm font-bold hover:bg-brand-700 shadow">
+                        <i class="fa-solid fa-rotate-right mr-1.5"></i> নতুন পরীক্ষা গঠন করুন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-center py-6 px-4 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p class="text-sm font-bold text-slate-200 tracking-wide">
+                © Authorized by Mainul Islam Munna
+            </p>
+            <p class="text-xs text-brand-400 font-semibold">
+                Computer Science & Engineering | University of Barishal
+            </p>
+        </div>
+    </footer>
+
+    <!-- USER AUTHENTICATION MODAL -->
+    <div id="userAuthModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-5 border border-slate-200">
+            <div class="flex items-center justify-between border-b pb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-check text-brand-600 text-xl"></i>
+                    <h3 class="font-bold text-base text-slate-900" id="userAuthTitle">ইউজার একাউন্ট ও লগইন</h3>
+                </div>
+                <button onclick="closeUserAuthModal()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="authFormView" class="space-y-4">
+                <button onclick="handleGoogleSignIn()" class="w-full py-3 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-700 flex items-center justify-center gap-2 shadow-sm transition">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span>গুগল একাউন্ট দিয়ে এক-ক্লিকে লগইন</span>
+                </button>
+
+                <div class="flex items-center gap-2 text-xs text-slate-400 my-2">
+                    <hr class="flex-grow">
+                    <span>অথবা ইমেইল/ফোন দিয়ে</span>
+                    <hr class="flex-grow">
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">আপনার নাম / ইমেইল / মোবাইল:</label>
+                        <input type="text" id="userInputEmail" placeholder="যেমন: mainul@gmail.com" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl font-medium focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">পাসওয়ার্ড:</label>
+                        <input type="password" id="userInputPassword" placeholder="******" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl font-medium focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                    <button onclick="handleEmailAuth()" class="w-full py-3 bg-brand-800 hover:bg-brand-900 text-white font-extrabold rounded-xl shadow transition">
+                        লগইন / আইডি ক্রিয়েট করুন
+                    </button>
+                </div>
+            </div>
+
+            <div id="userProfileView" class="hidden space-y-4 text-center">
+                <div class="w-16 h-16 bg-brand-100 text-brand-800 rounded-full flex items-center justify-center text-2xl font-black mx-auto border-2 border-brand-500">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-900 text-base" id="profileDisplayName">ব্যবহারকারীর নাম</h4>
+                    <p class="text-xs text-slate-500" id="profileEmailText">user@example.com</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-bold text-green-700">
+                    <i class="fa-solid fa-shield-check mr-1"></i> আপনার আইডি সফলভাবে সক্রিয় রয়েছে
+                </div>
+                <button onclick="handleUserLogout()" class="w-full py-2.5 bg-red-50 hover:bg-red-100 text-red-600 font-bold rounded-xl text-xs border border-red-200">
+                    লগআউট করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-6 border border-slate-200">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 bg-yellow-400 text-slate-900 rounded-xl flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-base text-slate-900">Munna's Secure Admin Panel</h3>
+                        <p class="text-xs text-slate-500">অনলাইন আপডেট, লাইভ কুইজ ও সিলেবাস নিয়ন্ত্রণ কেন্দ্র</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-slate-600 text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="adminAuthView" class="space-y-4">
+                <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-xs text-amber-900 font-semibold">
+                    <i class="fa-solid fa-lock mr-1 text-amber-600"></i> এডমিন প্যানেল এক্সেস করার জন্য আপনার সিক্রেট পিন প্রদান করুন।
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-slate-700">এডমিন পাসওয়ার্ড / সিক্রেট পিন:</label>
+                    <input type="password" id="adminPinInput" placeholder="••••••••" class="w-full p-3.5 bg-slate-50 border border-slate-300 rounded-xl font-extrabold text-center text-lg tracking-widest focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <button onclick="authenticateAdmin()" class="w-full py-3.5 bg-brand-900 hover:bg-brand-800 text-yellow-400 font-extrabold rounded-xl text-sm shadow">
+                    <i class="fa-solid fa-key mr-1"></i> এডমিন মোড আনলক করুন
+                </button>
+            </div>
+
+            <div id="adminActionView" class="hidden space-y-5">
+                <div class="flex border-b border-slate-200 text-xs font-bold">
+                    <button onclick="switchAdminTab('contest')" id="tabBtnContest" class="px-3 py-2 border-b-2 border-brand-600 text-brand-700">
+                        <i class="fa-solid fa-trophy mr-1"></i> লাইভ কুইজ ও ডেডলাইন
+                    </button>
+                    <button onclick="switchAdminTab('update')" id="tabBtnUpdate" class="px-3 py-2 text-slate-500 hover:text-slate-800">
+                        <i class="fa-solid fa-bullhorn mr-1"></i> লাইভ আপডেট
+                    </button>
+                    <button onclick="switchAdminTab('topic')" id="tabBtnTopic" class="px-3 py-2 text-slate-500 hover:text-slate-800">
+                        <i class="fa-solid fa-folder-plus mr-1"></i> টপিক যোগ
+                    </button>
+                </div>
+
+                <div id="adminTabContest" class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">লাইভ কুইজের নাম/শিরোনাম:</label>
+                        <input type="text" id="contestTitleInput" value="বিশেষ বিসিএস ও এনটিআরসিএ আইসিটি লাইভ কুইজ প্রতিযোগিতা" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">শেষ সময় / ডেডলাইন (Deadline Text/Date):</label>
+                        <input type="text" id="contestDeadlineInput" value="আজ রাত ১১:৫৯ মি. পর্যন্ত" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold text-purple-900" placeholder="যেমন: ১০ সেপ্টেম্বর, রাত ১০:০০ মি.">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">অধ্যায়:</label>
+                            <select id="contestChapterSelect" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold">
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">প্রশ্ন সংখ্যা:</label>
+                            <input type="number" id="contestQCount" value="15" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold text-center">
+                        </div>
+                    </div>
+                    <button onclick="launchLiveContest()" class="w-full py-3 bg-purple-700 hover:bg-purple-800 text-white font-extrabold rounded-xl shadow flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>লাইভ কুইজ ও নিউজ বুলেটিন চালু করুন</span>
+                    </button>
+                </div>
+
+                <div id="adminTabUpdate" class="hidden space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">ভার্সন নম্বর (Version):</label>
+                        <input type="text" id="adminVersionInput" value="v1.2" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">আপডেট বার্তা (Notice):</label>
+                        <textarea id="adminMessageInput" rows="2" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-medium" placeholder="যেমন: নতুন এনটিআরসিএ শিক্ষক নিবন্ধন লিখিত প্রশ্ন ও মডেল উত্তর যোগ করা হয়েছে!"></textarea>
+                    </div>
+                    <button onclick="publishCloudUpdate()" class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-extrabold rounded-xl shadow">
+                        সকল ইউজারের কাছে আপডেট পাঠান
+                    </button>
+                </div>
+
+                <div id="adminTabTopic" class="hidden space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">অধ্যায় নির্বাচন করুন:</label>
+                        <select id="adminChapterSelect" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold">
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">নতুন সাব-টপিকের নাম:</label>
+                        <input type="text" id="adminNewTopicInput" placeholder="যেমন: Docker & Kubernetes Architecture" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl font-medium">
+                    </div>
+                    <button onclick="addCustomSubTopic()" class="w-full py-3 bg-brand-800 hover:bg-brand-900 text-yellow-300 font-extrabold rounded-xl shadow">
+                        টপিক যোগ করুন
+                    </button>
+                </div>
+
+                <div class="pt-2 border-t flex justify-between items-center text-xs">
+                    <span class="text-green-700 font-bold"><i class="fa-solid fa-circle-check"></i> এডমিন মোড সক্রিয়</span>
+                    <button onclick="logoutAdmin()" class="text-red-600 hover:underline font-bold">লগআউট</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEADERBOARD MODAL -->
+    <div id="leaderboardModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 border border-slate-200">
+            <div class="flex items-center justify-between border-b pb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-trophy text-yellow-500 text-xl"></i>
+                    <h3 class="font-extrabold text-base text-slate-900">লাইভ কুইজ মেধা তালিকা (Leaderboard)</h3>
+                </div>
+                <button onclick="closeLeaderboardModal()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="leaderboardContent" class="space-y-2 max-h-80 overflow-y-auto custom-scrollbar text-xs">
+                <div class="text-center py-8 text-slate-400">
+                    <i class="fa-solid fa-spinner animate-spin text-2xl mb-2"></i>
+                    <p>লিডারবোর্ড স্কোর লোড হচ্ছে...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Concept Explainer Modal -->
+    <div id="explainModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
+            <div class="bg-brand-900 text-white p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bolt text-yellow-400 text-xl"></i>
+                    <h3 class="font-bold text-base">IT Cracker AI Tutor Concept Explainer</h3>
+                </div>
+                <button onclick="closeExplainModal()" class="text-slate-300 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div id="explainModalContent" class="p-6 overflow-y-auto space-y-4 custom-scrollbar text-slate-800 text-sm leading-relaxed">
+            </div>
+
+            <div class="bg-slate-100 p-4 border-t border-slate-200 flex justify-end">
+                <button onclick="closeExplainModal()" class="px-5 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIREBASE SDK MODULE & AUTH & FIRESTORE LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'it-cracker-munna-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "dummy", authDomain: "dummy.firebaseapp.com", projectId: "dummy", storageBucket: "dummy.appspot.com", messagingSenderId: "123", appId: "123"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        let authUser = null;
+        window.activeUser = null;
+
+        const initAuth = async () => {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (err) {
+                console.log("Firebase Auth Fallback", err);
+            }
+        };
+        initAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            authUser = user;
+            window.activeUser = user;
+            if (user && !user.isAnonymous) {
+                const name = user.displayName || user.email?.split('@')[0] || "ইউজার";
+                document.getElementById('navUserName').innerText = name;
+                document.getElementById('profileDisplayName').innerText = name;
+                document.getElementById('profileEmailText').innerText = user.email || user.uid;
+            } else {
+                document.getElementById('navUserName').innerText = "লগইন / সাইন আপ";
+            }
+            if (user) {
+                listenToAppUpdates();
+                listenToLiveContests();
+            }
+        });
+
+        window.handleGoogleSignIn = async function() {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                alert(`স্বাগতম, ${result.user.displayName || 'ইউজার'}! আইডি লগইন সফল হয়েছে।`);
+                window.closeUserAuthModal();
+            } catch (err) {
+                console.error("Google Auth error", err);
+                alert("গুগল দিয়ে লগইন করা সম্ভব হয়নি। ইমেইল ইনপুট ব্যবহার করুন।");
+            }
+        };
+
+        window.handleEmailAuth = function() {
+            const input = document.getElementById('userInputEmail').value.trim();
+            if (!input) {
+                alert("অনুগ্রহ করে আপনার নাম বা ইমেইল লিখুন।");
+                return;
+            }
+            document.getElementById('navUserName').innerText = input;
+            document.getElementById('profileDisplayName').innerText = input;
+            document.getElementById('profileEmailText').innerText = input.includes('@') ? input : `${input}@itcracker.user`;
+            document.getElementById('authFormView').classList.add('hidden');
+            document.getElementById('userProfileView').classList.remove('hidden');
+            alert(`স্বাগতম, ${input}! আপনার প্রোফাইল তৈরি হয়েছে।`);
+            window.closeUserAuthModal();
+        };
+
+        window.handleUserLogout = async function() {
+            try {
+                await signOut(auth);
+            } catch(e){}
+            document.getElementById('navUserName').innerText = "লগইন / সাইন আপ";
+            document.getElementById('authFormView').classList.remove('hidden');
+            document.getElementById('userProfileView').classList.add('hidden');
+            window.closeUserAuthModal();
+        };
+
+        function listenToAppUpdates() {
+            if (!authUser) return;
+            const updateDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'app_updates', 'latest');
+            onSnapshot(updateDocRef, (snap) => {
+                if (snap.exists()) {
+                    const data = snap.data();
+                    if (data && data.version && data.version !== "v1.1") {
+                        document.getElementById('toastVersionBadge').innerText = `লাইভ আপডেট: ${data.version} - ${data.message}`;
+                        document.getElementById('liveUpdateToast').classList.remove('hidden');
+                    }
+                }
+            }, (e) => console.log(e));
+
+            const topicsCol = collection(db, 'artifacts', appId, 'public', 'data', 'custom_topics');
+            onSnapshot(topicsCol, (snap) => {
+                snap.forEach(d => {
+                    const item = d.data();
+                    if (item && item.chapterId && item.topicName) {
+                        const chap = ICT_SYLLABUS.find(c => c.id === item.chapterId);
+                        if (chap && !chap.topics.includes(item.topicName)) {
+                            chap.topics.push(item.topicName);
+                            window.updateTopicsDropdown();
+                        }
+                    }
+                });
+            }, (e) => console.log(e));
+        }
+
+        function listenToLiveContests() {
+            if (!authUser) return;
+            const contestDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'live_contests', 'active');
+            onSnapshot(contestDocRef, (snap) => {
+                if (snap.exists()) {
+                    const data = snap.data();
+                    if (data && data.active) {
+                        window.activeContestData = data;
+                        document.getElementById('liveContestTitle').innerText = data.title;
+                        document.getElementById('contestDeadlineText').innerText = data.deadline || 'আজ রাত ১১:৫৯ মি.';
+                        document.getElementById('marqueeText').innerText = `📢 ${data.title} চলমান রয়েছে! শেষ সময়: ${data.deadline || 'আজ রাত ১১:৫৯ মি.'}। অংশ নিতে নিচে ক্লিক করুন!`;
+                        
+                        document.getElementById('liveContestNotice').classList.remove('hidden');
+                        document.getElementById('contestMarqueeBar').classList.remove('hidden');
+                    } else {
+                        document.getElementById('liveContestNotice').classList.add('hidden');
+                        document.getElementById('contestMarqueeBar').classList.add('hidden');
+                    }
+                }
+            }, (e) => console.log(e));
+        }
+
+        window.publishCloudUpdate = async function() {
+            if (!authUser) return;
+            const version = document.getElementById('adminVersionInput').value.trim();
+            const message = document.getElementById('adminMessageInput').value.trim();
+            if (!version || !message) {
+                alert("ভার্সন ও মেসেজ দুটোই প্রদান করুন।");
+                return;
+            }
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'app_updates', 'latest');
+                await setDoc(docRef, { version, message, updatedAt: new Date().toISOString() });
+                alert("✅ সকল ইউজারের জন্য লাইভ আপডেট ব্রডকাস্ট করা হয়েছে!");
+                window.closeAdminModal();
+            } catch (err) {
+                alert("আপডেট পাঠাতে সমস্যা হয়েছে।");
+            }
+        };
+
+        window.launchLiveContest = async function() {
+            if (!authUser) return;
+            const title = document.getElementById('contestTitleInput').value.trim();
+            const deadline = document.getElementById('contestDeadlineInput').value.trim();
+            const chapId = document.getElementById('contestChapterSelect').value;
+            const qCount = parseInt(document.getElementById('contestQCount').value) || 15;
+
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'live_contests', 'active');
+                await setDoc(docRef, {
+                    title, deadline, chapterId, qCount, active: true, createdAt: new Date().toISOString()
+                });
+                alert("🚀 লাইভ কুইজ প্রতিযোগিতা এবং নিউজ বুলেটিন সফলভাবে চালু করা হয়েছে!");
+                window.closeAdminModal();
+            } catch (err) {
+                alert("কন্টেস্ট শুরু করতে সমস্যা হয়েছে।");
+            }
+        };
+
+        window.saveContestScoreToLeaderboard = async function(score, total) {
+            if (!authUser) return;
+            const username = document.getElementById('navUserName').innerText || "পরীক্ষার্থী";
+            try {
+                const docId = `score_${authUser.uid}_${Date.now()}`;
+                const scoreDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'live_leaderboard', docId);
+                await setDoc(scoreDocRef, {
+                    uid: authUser.uid,
+                    name: username,
+                    score: score,
+                    total: total,
+                    timestamp: new Date().toISOString()
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        window.fetchLeaderboard = function() {
+            if (!authUser) return;
+            const container = document.getElementById('leaderboardContent');
+            const leaderboardCol = collection(db, 'artifacts', appId, 'public', 'data', 'live_leaderboard');
+            
+            onSnapshot(leaderboardCol, (snap) => {
+                let items = [];
+                snap.forEach(d => items.push(d.data()));
+                items.sort((a, b) => b.score - a.score);
+
+                if (items.length === 0) {
+                    container.innerHTML = `<p class="text-center py-6 text-slate-500 font-bold">এখনো কেউ অংশগ্রহণ করেনি। প্রথম বিজয়ী হন!</p>`;
+                    return;
+                }
+
+                container.innerHTML = items.slice(0, 10).map((item, idx) => `
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between font-bold">
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full ${idx === 0 ? 'bg-yellow-400 text-slate-950' : idx === 1 ? 'bg-slate-300 text-slate-900' : 'bg-amber-100 text-amber-900'} flex items-center justify-center text-xs">
+                                ${idx + 1}
+                            </span>
+                            <span class="text-slate-900">${item.name || 'ইউজার'}</span>
+                        </div>
+                        <span class="text-brand-700 bg-brand-50 px-2 py-1 rounded text-xs">স্কোর: ${item.score}/${item.total}</span>
+                    </div>
+                `).join('');
+            }, (e) => console.log(e));
+        };
+    </script>
+
+    <!-- COMPREHENSIVE ICT SYLLABUS DATABASE & MAIN JS -->
+    <script>
+        const ICT_SYLLABUS = [
+            {
+                id: "computer_basics",
+                title: "১. কম্পিউটার মৌলিক, ইতিহাস ও পেরিফেরালস",
+                icon: "fa-desktop",
+                topics: [
+                    "All Topics",
+                    "কম্পিউটারের প্রজন্ম ও ইতিহাস (Generations & History)",
+                    "কম্পিউটারের শ্রেণিবিভাগ (Super, Mainframe, Micro, Embedded)",
+                    "ইনপুট ও আউটপুট পেরিফেরালস (Mouse, Keyboard, OCR, Display, Printers)",
+                    "কম্পিউটারের অঙ্গসংগঠন ও সিস্টেম ইউনিট",
+                    "কম্পিউটারের পারফরম্যান্স ও বেঞ্চমার্কিং (Benchmarking)"
+                ]
+            },
+            {
+                id: "digital_logic",
+                title: "২. ডিজিটাল ইলেকট্রনিক্স ও নম্বর ব্যবস্থা",
+                icon: "fa-microchip",
+                topics: [
+                    "All Topics",
+                    "সংখ্যা পদ্ধতি (Binary, Octal, Hex, 2's Complement)",
+                    "বুলিয়ান অ্যালজেব্রা ও K-Map Simplification",
+                    "লজিক গেট (Basic, Universal & Special Gates)",
+                    "কম্বিনেশনাল সার্কিট (Encoder, Decoder, Multiplexer, Adder)",
+                    "সিকুয়েনশিয়াল সার্কিট (Flip-Flops, Counters, Registers)"
+                ]
+            },
+            {
+                id: "architecture",
+                title: "৩. কম্পিউটার অঙ্গসংগঠন ও আর্কিটেকচার",
+                icon: "fa-memory",
+                topics: [
+                    "All Topics",
+                    "সিপিইউ ও মাইক্রোপ্রসেসর আর্কিটেকচার (ALU, Control Unit)",
+                    "মেমোরি হায়ারার্কি (RAM, ROM, Cache, Registers, Virtual Memory)",
+                    "মাদারবোর্ড, কার্ডস ও বাস আর্কিটেকচার (Data, Address, Control Bus)",
+                    "ইনটারাপ্ট প্রসেসিং ও আই/ও চ্যালেনস (I/O Channels)"
+                ]
+            },
+            {
+                id: "programming_languages",
+                title: "৪. সি, অবজেক্ট ওরিয়েন্টেড (OOP) ও পাইথন প্রোগ্রামিং",
+                icon: "fa-code",
+                topics: [
+                    "All Topics",
+                    "C Programming Fundamentals (Control Flow, Data Types, Arrays)",
+                    "Pointers, Functions, File I/O & Console I/O in C",
+                    "Structures & Unions (Memory Allocation)",
+                    "Object-Oriented Programming (Classes, Objects, Inheritance, Polymorphism, Encapsulation)",
+                    "Python Programming Basics & Syntax"
+                ]
+            },
+            {
+                id: "data_structure_algorithm",
+                title: "৫. ডেটা স্ট্রাকচার, অ্যালগরিদম ও অপটিমাইজেশন",
+                icon: "fa-sitemap",
+                topics: [
+                    "All Topics",
+                    "Linear Data Structures (Arrays, Linked Lists, Stacks, Queues)",
+                    "Trees & Graphs (BST, Heaps, AVL Tree, Graph BFS/DFS)",
+                    "Sorting & Searching Algorithms (Bubble, Quick, Merge Sort, Binary Search)",
+                    "Dynamic Programming & Greedy Algorithms (Knapsack, LCS, Shortest Path)",
+                    "Time & Space Complexity Analysis (Big-O Notation)"
+                ]
+            },
+            {
+                id: "operating_system",
+                title: "৬. অপারেটিং সিস্টেম ও সিস্টেম প্রোগ্রামিং",
+                icon: "fa-gears",
+                topics: [
+                    "All Topics",
+                    "OS Overview, CPU States & Kernel vs Shell",
+                    "Process Control, Threads, Scheduling Algorithms (FCFS, SJF, RR)",
+                    "Concurrency, Mutual Exclusion, Semaphores & Deadlock (Banker's Algorithm)",
+                    "Memory Management (Paging, Segmentation, Page Replacement)",
+                    "UNIX/Linux Process Control, Inodes & File Systems (FAT32, NTFS, ext4)"
+                ]
+            },
+            {
+                id: "dbms",
+                title: "৭. ডেটাবেজ ম্যানেজমেন্ট সিস্টেম (DBMS & SQL)",
+                icon: "fa-database",
+                topics: [
+                    "All Topics",
+                    "RDBMS Concepts & Entity-Relationship (E-R) Diagram",
+                    "Relational Model & Normalization (1NF, 2NF, 3NF, BCNF)",
+                    "SQL Queries (DDL, DML, Joins, Aggregation)",
+                    "Transaction Management, ACID Properties & Concurrency Control",
+                    "Indexing (B-Tree, B+ Tree, Hashing) & Distributed Databases"
+                ]
+            },
+            {
+                id: "networking_security",
+                title: "৮. কম্পিউটার নেটওয়ার্ক, ডেটা কমিউনিকেশন ও সিকিউরিটি",
+                icon: "fa-network-wired",
+                topics: [
+                    "All Topics",
+                    "OSI Model & TCP/IP Protocol Layers",
+                    "IP Addressing & Subnetting (IPv4 vs IPv6)",
+                    "Routing Algorithms (Link State, Distance Vector, OSPF, BGP)",
+                    "Guided & Unguided Media, Topologies & Networking Devices",
+                    "Cyber Crime & Security (Cryptography, Digital Signature, Firewall, Malware, Phishing)"
+                ]
+            },
+            {
+                id: "software_engineering",
+                title: "৯. সফটওয়্যার ইঞ্জিনিয়ারিং ও এসডিএলসি",
+                icon: "fa-diagram-project",
+                topics: [
+                    "All Topics",
+                    "Software Development Life Cycle (SDLC) & Models (Waterfall, Agile, Scrum, Spiral)",
+                    "Software Testing (Black-box, White-box, Unit, Integration, Alpha/Beta)",
+                    "Design Principles (Coupling & Cohesion, Modularity, Abstraction)",
+                    "Requirements Engineering, SRS & Data Flow Diagrams (DFD)",
+                    "Software Project Management (COCOMO Model, Risk Management)"
+                ]
+            },
+            {
+                id: "web_tech_telecom",
+                title: "১০. ওয়েব টেকনোলজি, ই-কমার্স ও টেলিকমিউনিকেশন",
+                icon: "fa-globe",
+                topics: [
+                    "All Topics",
+                    "Web Basics (HTML5, CSS3, JavaScript, HTTP/HTTPS, Web Servers, MVC)",
+                    "Mobile Technology & Cellular Networks (2G/3G/4G/5G, SIM, Hotspot)",
+                    "E-commerce, M-commerce, Online Banking & Fintech Payment Gateways",
+                    "Web Security (Buffer Overflow, XSS, Denial of Service - DoS)"
+                ]
+            },
+            {
+                id: "modern_tech_ai",
+                title: "১১. সাম্প্রতিক প্রযুক্তি: এআই, ক্লাউড, আইওটি ও ব্লকচেইন",
+                icon: "fa-brain",
+                topics: [
+                    "All Topics",
+                    "Artificial Intelligence, Machine Learning, Generative AI & LLM",
+                    "Cloud Computing Service Models (IaaS, PaaS, SaaS, Virtualization)",
+                    "Internet of Things (IoT), Sensors & Robotics",
+                    "Blockchain, Cryptocurrency & Quantum Computing",
+                    "Big Data Analytics & AR/VR/Metaverse"
+                ]
+            },
+            {
+                id: "ms_office_abbreviations",
+                title: "১২. মাইক্রোসফট অফিস ও আইসিটি সংক্ষিপ্ত রূপ",
+                icon: "fa-file-lines",
+                topics: [
+                    "All Topics",
+                    "Microsoft Word (Formatting, Short-keys, Page Layout)",
+                    "Microsoft Excel (Formulas, Functions, Charts)",
+                    "Microsoft PowerPoint (Slides, Animations)",
+                    "Computer & ICT Related Abbreviations (সংক্ষিপ্ত শব্দের পূর্ণরূপ)"
+                ]
+            }
+        ];
+
+        const apiKey = ""; 
+        let selectedExamTarget = 'bcs';
+        let currentQuestions = [];
+        let userAnswers = {};
+        let quizTimerInterval = null;
+        let examTimeSeconds = 0;
+        let isQuizSubmitted = false;
+        let isAdminLoggedIn = false;
+        const ADMIN_PIN_SECRET = "1234";
+
+        const EXAM_NAMES = {
+            'bcs': 'বিসিএস (প্রিলিমিনারি ও লিখিত)',
+            'ntrca': 'এনটিআরসিএ শিক্ষক/প্রভাষক নিবন্ধন',
+            'it_officer': 'সরকারি আইটি অফিসার/প্রগ্রামার',
+            'bank': 'ব্যাংক ও পিএসসি অন্যান্য আইটি পরীক্ষা',
+            'general': 'সাধারণ প্রস্তুতি (বিগত ও নতুন কম্বাইন্ড)'
+        };
+
+        function openUserAuthModal() {
+            document.getElementById('userAuthModal').classList.remove('hidden');
+        }
+        function closeUserAuthModal() {
+            document.getElementById('userAuthModal').classList.add('hidden');
+        }
+
+        function openLeaderboardModal() {
+            document.getElementById('leaderboardModal').classList.remove('hidden');
+            if (window.fetchLeaderboard) window.fetchLeaderboard();
+        }
+        function closeLeaderboardModal() {
+            document.getElementById('leaderboardModal').classList.add('hidden');
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            if (isAdminLoggedIn) {
+                document.getElementById('adminAuthView').classList.add('hidden');
+                document.getElementById('adminActionView').classList.remove('hidden');
+                populateAdminChapters();
+            } else {
+                document.getElementById('adminAuthView').classList.remove('hidden');
+                document.getElementById('adminActionView').classList.add('hidden');
+            }
+        }
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function authenticateAdmin() {
+            const pin = document.getElementById('adminPinInput').value;
+            if (pin === ADMIN_PIN_SECRET) {
+                isAdminLoggedIn = true;
+                document.getElementById('adminPinInput').value = "";
+                document.getElementById('adminAuthView').classList.add('hidden');
+                document.getElementById('adminActionView').classList.remove('hidden');
+                populateAdminChapters();
+            } else {
+                alert("❌ ভুল এডমিন পিন! আবার চেষ্টা করুন।");
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            closeAdminModal();
+        }
+
+        function switchAdminTab(tab) {
+            document.getElementById('adminTabUpdate').classList.add('hidden');
+            document.getElementById('adminTabContest').classList.add('hidden');
+            document.getElementById('adminTabTopic').classList.add('hidden');
+
+            document.getElementById('tabBtnUpdate').className = "px-3 py-2 text-slate-500 hover:text-slate-800";
+            document.getElementById('tabBtnContest').className = "px-3 py-2 text-slate-500 hover:text-slate-800";
+            document.getElementById('tabBtnTopic').className = "px-3 py-2 text-slate-500 hover:text-slate-800";
+
+            if (tab === 'update') {
+                document.getElementById('adminTabUpdate').classList.remove('hidden');
+                document.getElementById('tabBtnUpdate').className = "px-3 py-2 border-b-2 border-brand-600 text-brand-700 font-bold";
+            } else if (tab === 'contest') {
+                document.getElementById('adminTabContest').classList.remove('hidden');
+                document.getElementById('tabBtnContest').className = "px-3 py-2 border-b-2 border-brand-600 text-brand-700 font-bold";
+            } else {
+                document.getElementById('adminTabTopic').classList.remove('hidden');
+                document.getElementById('tabBtnTopic').className = "px-3 py-2 border-b-2 border-brand-600 text-brand-700 font-bold";
+            }
+        }
+
+        function populateAdminChapters() {
+            const sel1 = document.getElementById('adminChapterSelect');
+            const sel2 = document.getElementById('contestChapterSelect');
+            const optionsHtml = ICT_SYLLABUS.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+            if (sel1) sel1.innerHTML = optionsHtml;
+            if (sel2) sel2.innerHTML = optionsHtml;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            populateChapters();
+            renderChapterCards();
+        });
+
+        function setExamTarget(targetKey, btnElement) {
+            selectedExamTarget = targetKey;
+            document.querySelectorAll('.exam-target-btn').forEach(btn => {
+                btn.className = "exam-target-btn px-4 py-3 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20";
+                const check = btn.querySelector('.fa-circle-check');
+                if (check) check.remove();
+            });
+
+            btnElement.className = "exam-target-btn active-target px-4 py-3 rounded-2xl border-2 text-left font-bold text-xs sm:text-sm transition flex flex-col justify-between h-20 bg-brand-50 border-brand-600 text-brand-900 shadow-sm";
+            const topSpan = btnElement.querySelector('span');
+            if (topSpan && !topSpan.querySelector('.fa-circle-check')) {
+                topSpan.innerHTML += ' <i class="fa-solid fa-circle-check text-brand-600 text-xs"></i>';
+            }
+        }
+
+        function populateChapters() {
+            const chapSelect = document.getElementById('chapterSelect');
+            chapSelect.innerHTML = ICT_SYLLABUS.map(chap => 
+                `<option value="${chap.id}">${chap.title}</option>`
+            ).join('');
+
+            chapSelect.addEventListener('change', updateTopicsDropdown);
+            updateTopicsDropdown();
+        }
+
+        function updateTopicsDropdown() {
+            const chapId = document.getElementById('chapterSelect').value;
+            const topicSelect = document.getElementById('topicSelect');
+            const chapter = ICT_SYLLABUS.find(c => c.id === chapId);
+            
+            if (chapter) {
+                topicSelect.innerHTML = chapter.topics.map(topic => 
+                    `<option value="${topic}">${topic}</option>`
+                ).join('');
+            }
+        }
+        window.updateTopicsDropdown = updateTopicsDropdown;
+
+        function setQCount(num) {
+            document.getElementById('questionCount').value = num;
+        }
+
+        function renderChapterCards() {
+            const grid = document.getElementById('chapterGrid');
+            grid.innerHTML = ICT_SYLLABUS.map(chap => `
+                <div onclick="selectChapterCard('${chap.id}')" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-500 hover:shadow-md transition cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fa-solid ${chap.icon} text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1 leading-snug group-hover:text-brand-600 transition">${chap.title}</h4>
+                        <p class="text-xs text-slate-500 mt-2">${chap.topics.length - 1} টি সাব-টপিক অন্তর্ভুক্ত</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectChapterCard(chapId) {
+            document.getElementById('chapterSelect').value = chapId;
+            updateTopicsDropdown();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function joinLiveContest() {
+            if (!window.activeContestData) return;
+            document.getElementById('chapterSelect').value = window.activeContestData.chapterId;
+            updateTopicsDropdown();
+            document.getElementById('questionCount').value = window.activeContestData.qCount || 15;
+            generateQuestions();
+        }
+
+        async function fetchGeminiWithRetry(url, payload, retries = 5) {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (response.ok) return await response.json();
+                } catch (err) {
+                    if (i === retries - 1) throw err;
+                }
+                await new Promise(res => setTimeout(res, delays[i]));
+            }
+            throw new Error("Gemini API call failed");
+        }
+
+        async function generateQuestions() {
+            const chapterId = document.getElementById('chapterSelect').value;
+            const chapterObj = ICT_SYLLABUS.find(c => c.id === chapterId);
+            const topic = document.getElementById('topicSelect').value;
+            let count = parseInt(document.getElementById('questionCount').value) || 10;
+            count = Math.min(Math.max(count, 1), 100);
+
+            const format = document.querySelector('input[name="formatSelect"]:checked').value;
+            const targetExamName = EXAM_NAMES[selectedExamTarget];
+
+            document.getElementById('setupSection').classList.add('hidden');
+            document.getElementById('loadingSection').classList.remove('hidden');
+            document.getElementById('loadingStatusText').innerText = `[${targetExamName}] মানদণ্ডে ${chapterObj.title} এর ${topic} টপিকের ওপর ${count}টি ${format === 'mcq' ? 'MCQ' : 'লিখিত (Written)'} প্রশ্ন সংকলন করা হচ্ছে...`;
+
+            const systemPrompt = `You are an expert ICT Exam Setter for Bangladesh Competitive Exams (BCS, NTRCA Lecturer, IT Officer, Bank Exams) working for the platform "IT Cracker".
+Language: Bengali (বাংলা).
+Generate precise, high-quality questions matching the selected target exam scope and standard.
+For Written Format: Ensure sub-questions are neatly separated on new lines or as separate sub-points (e.g. Question main text on line 1, sub-parts on separate lines). In model answer, structure clearly with bullet points, numbered lists, and distinct paragraphs instead of inline running text.`;
+
+            let userQuery = "";
+            let responseSchema = {};
+
+            if (format === 'mcq') {
+                userQuery = `Generate exactly ${count} MCQ questions based on:
+Target Exam Standard: ${targetExamName}
+Chapter: ${chapterObj.title}
+Sub-Topic: ${topic}`;
+
+                responseSchema = {
+                    type: "OBJECT",
+                    properties: {
+                        questions: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    id: { type: "INTEGER" },
+                                    question: { type: "STRING" },
+                                    options: { type: "ARRAY", items: { type: "STRING" } },
+                                    correctAnswerIndex: { type: "INTEGER" },
+                                    explanation: { type: "STRING" }
+                                },
+                                required: ["id", "question", "options", "correctAnswerIndex", "explanation"]
+                            }
+                        }
+                    },
+                    required: ["questions"]
+                };
+            } else {
+                userQuery = `Generate exactly ${count} Written Questions (লিখিত প্রশ্ন ও আদর্শ উত্তর) based on:
+Target Exam Standard: ${targetExamName}
+Chapter: ${chapterObj.title}
+Sub-Topic: ${topic}`;
+
+                responseSchema = {
+                    type: "OBJECT",
+                    properties: {
+                        writtenQuestions: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    id: { type: "INTEGER" },
+                                    question: { type: "STRING" },
+                                    marks: { type: "STRING" },
+                                    modelAnswer: { type: "STRING" },
+                                    keyPoints: { type: "ARRAY", items: { type: "STRING" } }
+                                },
+                                required: ["id", "question", "marks", "modelAnswer", "keyPoints"]
+                            }
+                        }
+                    },
+                    required: ["writtenQuestions"]
+                };
+            }
+
+            const apiPayload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: responseSchema
+                }
+            };
+
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                const responseData = await fetchGeminiWithRetry(endpoint, apiPayload);
+                const jsonText = responseData.candidates?.[0]?.content?.parts?.[0]?.text;
+                const parsed = JSON.parse(jsonText);
+
+                if (format === 'mcq' && parsed.questions) {
+                    currentQuestions = parsed.questions;
+                    startExamSession(chapterObj.title, topic, 'mcq');
+                } else if (format === 'written' && parsed.writtenQuestions) {
+                    currentQuestions = parsed.writtenQuestions;
+                    startExamSession(chapterObj.title, topic, 'written');
+                } else {
+                    throw new Error("Invalid output format");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("দুঃখিত, প্রশ্নমালা তৈরি করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+                resetApp();
+            }
+        }
+
+        function startExamSession(chapterTitle, topicTitle, format) {
+            userAnswers = {};
+            isQuizSubmitted = false;
+            document.getElementById('loadingSection').classList.add('hidden');
+            document.getElementById('activeQuizSection').classList.remove('hidden');
+
+            document.getElementById('activeExamBadge').innerText = EXAM_NAMES[selectedExamTarget];
+            document.getElementById('activeChapterBadge').innerText = chapterTitle;
+            document.getElementById('activeTopicBadge').innerText = topicTitle;
+
+            const isWritten = format === 'written';
+            document.getElementById('timerContainer').style.display = isWritten ? 'none' : 'flex';
+            document.getElementById('progressContainer').style.display = isWritten ? 'none' : 'block';
+            document.getElementById('quizFooterControls').style.display = isWritten ? 'none' : 'flex';
+
+            if (isWritten) {
+                renderWrittenQuestions();
+            } else {
+                renderMCQQuestions();
+                updateProgress();
+                startTimer(currentQuestions.length * 60);
+            }
+        }
+
+        function renderMCQQuestions() {
+            const container = document.getElementById('questionsContainer');
+            const optionLabels = ['A', 'B', 'C', 'D'];
+
+            container.innerHTML = currentQuestions.map((q, idx) => `
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4" id="q-card-${idx}">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-start gap-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-brand-100 text-brand-800 font-extrabold rounded-xl flex items-center justify-center text-sm shadow-sm">
+                                ${idx + 1}
+                            </span>
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-relaxed pt-0.5 whitespace-pre-line">
+                                ${q.question}
+                            </h3>
+                        </div>
+                        <button onclick="explainWithAI(${idx}, 'mcq')" class="flex-shrink-0 text-xs px-3 py-1.5 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-xl border border-brand-200 flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i> AI টিউটর
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        ${q.options.map((opt, oIdx) => `
+                            <button type="button" 
+                                    onclick="selectOption(${idx}, ${oIdx})" 
+                                    id="opt-${idx}-${oIdx}"
+                                    class="option-btn-${idx} w-full text-left p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 transition flex items-center space-x-3 space-x-reverse">
+                                <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs font-bold bg-white flex-shrink-0">
+                                    ${optionLabels[oIdx]}
+                                </span>
+                                <span class="text-sm font-medium leading-relaxed">${opt}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div id="explanation-${idx}" class="hidden mt-4 p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs sm:text-sm">
+                        <div class="font-bold text-slate-700 flex items-center justify-between">
+                            <span class="flex items-center gap-1.5 text-brand-700">
+                                <i class="fa-solid fa-circle-info"></i> সঠিক উত্তর ও ব্যাখ্যা:
+                            </span>
+                            <button onclick="speakTTS('${q.explanation.replace(/'/g, "\\'")}')" class="text-brand-600 hover:text-brand-800 font-bold flex items-center gap-1 text-xs">
+                                <i class="fa-solid fa-volume-high"></i> ভয়েস শুনুন
+                            </button>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed whitespace-pre-line">${q.explanation}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderWrittenQuestions() {
+            const container = document.getElementById('questionsContainer');
+
+            container.innerHTML = currentQuestions.map((q, idx) => {
+                const formattedQuestion = q.question.replace(/\n/g, '<br>');
+
+                const answerParagraphs = q.modelAnswer.split('\n').filter(p => p.trim().length > 0);
+                const formattedAnswerHtml = answerParagraphs.map(p => {
+                    const trimmed = p.trim();
+                    if (trimmed.startsWith('•') || trimmed.startsWith('-') || /^\d+\./.test(trimmed)) {
+                        return `<li class="ml-4 list-disc pl-1 text-slate-800 font-medium my-1.5 leading-relaxed">${trimmed.replace(/^[•\-\d+\.]\s*/, '')}</li>`;
+                    }
+                    return `<p class="mb-2.5 text-slate-800 leading-relaxed font-medium">${trimmed}</p>`;
+                }).join('');
+
+                return `
+                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="flex items-start gap-3">
+                            <span class="flex-shrink-0 px-3 py-1 bg-purple-100 text-purple-900 font-extrabold rounded-xl text-xs shadow-sm">
+                                প্রশ্ন ${idx + 1} (${q.marks || '৫'} মার্কস)
+                            </span>
+                            <div class="font-bold text-slate-900 text-base sm:text-lg leading-relaxed pt-0.5 space-y-1">
+                                ${formattedQuestion}
+                            </div>
+                        </div>
+                        <button onclick="explainWithAI(${idx}, 'written')" class="flex-shrink-0 text-xs px-3.5 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 font-extrabold rounded-xl border border-purple-200 flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-wand-magic-sparkles text-purple-500"></i> AI ডিপ ব্যাখ্যা
+                        </button>
+                    </div>
+
+                    <div class="pt-1">
+                        <button onclick="toggleWrittenAnswer(${idx})" id="expandBtn-${idx}" class="w-full py-3.5 bg-purple-50 hover:bg-purple-100 text-purple-900 font-extrabold rounded-2xl text-xs sm:text-sm border border-purple-200 transition flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-eye text-purple-600" id="expandIcon-${idx}"></i>
+                            <span id="expandText-${idx}">👁️ উত্তর ও মূল পয়েন্ট দেখতে এখানে ক্লিক করুন (Expand Answer)</span>
+                        </button>
+
+                        <div id="writtenAnswerBox-${idx}" class="hidden mt-4 space-y-4 pt-3 border-t border-purple-100 animate-fadeIn">
+                            <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+                                <span class="text-purple-800 flex items-center gap-1.5 text-sm">
+                                    <i class="fa-solid fa-file-signature"></i> আদর্শ লিখিত উত্তর (Model Written Answer):
+                                </span>
+                                <button onclick="speakTTS('${q.modelAnswer.replace(/'/g, "\\'").replace(/\n/g, " ")}')" class="text-purple-600 hover:text-purple-800 font-bold flex items-center gap-1 text-xs">
+                                    <i class="fa-solid fa-volume-high"></i> উত্তরটি শুনুন
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-slate-800 text-sm leading-relaxed space-y-1">
+                                ${formattedAnswerHtml}
+                            </div>
+
+                            ${q.keyPoints && q.keyPoints.length > 0 ? `
+                                <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-200 text-xs space-y-2">
+                                    <div class="font-extrabold text-amber-950 text-xs sm:text-sm flex items-center gap-1.5">
+                                        <i class="fa-solid fa-lightbulb text-amber-600"></i> পরীক্ষার খাতায় লিখতেই হবে এমন পয়েন্টসমূহ (Key Bullet Points):
+                                    </div>
+                                    <ul class="space-y-1.5 text-amber-900 font-semibold pl-2">
+                                        ${q.keyPoints.map(kp => `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-600 text-xs mt-0.5"></i> <span>${kp}</span></li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        function toggleWrittenAnswer(idx) {
+            const box = document.getElementById(`writtenAnswerBox-${idx}`);
+            const btnText = document.getElementById(`expandText-${idx}`);
+            const btnIcon = document.getElementById(`expandIcon-${idx}`);
+
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                btnText.innerText = "উত্তর আড়াল করুন (Hide Answer)";
+                btnIcon.className = "fa-solid fa-eye-slash text-purple-600";
+            } else {
+                box.classList.add('hidden');
+                btnText.innerText = "👁️ উত্তর ও মূল পয়েন্ট দেখতে এখানে ক্লিক করুন (Expand Answer)";
+                btnIcon.className = "fa-solid fa-eye text-purple-600";
+            }
+        }
+
+        function selectOption(qIdx, optIdx) {
+            if (isQuizSubmitted) return;
+            userAnswers[qIdx] = optIdx;
+            const buttons = document.querySelectorAll(`.option-btn-${qIdx}`);
+            
+            buttons.forEach((btn, idx) => {
+                if (idx === optIdx) {
+                    btn.className = btn.className.replace(/border-slate-200 bg-slate-50/g, 'border-brand-600 bg-brand-50 font-bold text-brand-900');
+                    btn.querySelector('span').className = "w-6 h-6 rounded-full border border-brand-600 flex items-center justify-center text-xs font-bold bg-brand-600 text-white flex-shrink-0";
+                } else {
+                    btn.className = "option-btn-" + qIdx + " w-full text-left p-3.5 rounded-xl border transition flex items-center space-x-3 space-x-reverse border-slate-200 bg-slate-50 text-slate-800";
+                    btn.querySelector('span').className = "w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs font-bold bg-white flex-shrink-0";
+                }
+            });
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const answeredCount = Object.keys(userAnswers).length;
+            document.getElementById('progressText').innerText = `${answeredCount}/${currentQuestions.length}`;
+        }
+
+        function startTimer(durationSeconds) {
+            clearInterval(quizTimerInterval);
+            examTimeSeconds = durationSeconds;
+
+            quizTimerInterval = setInterval(() => {
+                examTimeSeconds--;
+                const mins = Math.floor(examTimeSeconds / 60);
+                const secs = examTimeSeconds % 60;
+                document.getElementById('timerText').innerText = 
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (examTimeSeconds <= 0) {
+                    clearInterval(quizTimerInterval);
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+
+        function finishQuiz() {
+            clearInterval(quizTimerInterval);
+            isQuizSubmitted = true;
+
+            let correct = 0;
+            let wrong = 0;
+
+            currentQuestions.forEach((q, idx) => {
+                const selected = userAnswers[idx];
+                if (selected === q.correctAnswerIndex) {
+                    correct++;
+                } else if (selected !== undefined) {
+                    wrong++;
+                }
+            });
+
+            const total = currentQuestions.length;
+            const score = correct - (wrong * 0.25);
+
+            document.getElementById('activeQuizSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('hidden');
+
+            document.getElementById('resTotal').innerText = total;
+            document.getElementById('resCorrect').innerText = correct;
+            document.getElementById('resWrong').innerText = wrong;
+            document.getElementById('resScore').innerText = score >= 0 ? score.toFixed(2) : '0';
+
+            if (window.saveContestScoreToLeaderboard) {
+                window.saveContestScoreToLeaderboard(score, total);
+            }
+
+            generateAIAnalysis(total, correct, wrong, score);
+        }
+
+        function reviewAnswers() {
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('activeQuizSection').classList.remove('hidden');
+            document.getElementById('quizFooterControls').style.display = 'none';
+
+            currentQuestions.forEach((q, idx) => {
+                const userAns = userAnswers[idx];
+                const correctAns = q.correctAnswerIndex;
+                const buttons = document.querySelectorAll(`.option-btn-${idx}`);
+
+                buttons.forEach((btn, oIdx) => {
+                    btn.disabled = true;
+                    if (oIdx === correctAns) {
+                        btn.className = "w-full text-left p-3.5 rounded-xl border border-green-500 bg-green-50 text-green-900 font-bold flex items-center space-x-3 space-x-reverse";
+                    } else if (oIdx === userAns && userAns !== correctAns) {
+                        btn.className = "w-full text-left p-3.5 rounded-xl border border-red-500 bg-red-50 text-red-900 font-bold flex items-center space-x-3 space-x-reverse";
+                    } else {
+                        btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-400 opacity-60 flex items-center space-x-3 space-x-reverse";
+                    }
+                });
+
+                document.getElementById(`explanation-${idx}`).classList.remove('hidden');
+            });
+        }
+
+        async function generateAIAnalysis(total, correct, wrong, score) {
+            const analysisText = document.getElementById('aiAnalysisText');
+            analysisText.innerText = "IT Cracker AI আপনার পারফরম্যান্স বিশ্লেষণ করে রিপোর্ট তৈরি করছে...";
+
+            const topic = document.getElementById('topicSelect').value;
+            const prompt = `Student ICT Exam Diagnostic Report for "IT Cracker":
+Target Exam: ${EXAM_NAMES[selectedExamTarget]}
+Total MCQs: ${total}
+Correct: ${correct}
+Wrong: ${wrong}
+Final Score: ${score}
+Topic: ${topic}
+
+Write a structured 3-sentence diagnostic advice in Bengali (বাংলা). Assess candidate readiness for this target exam and suggest specific sub-topics to review.`;
+
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                const res = await fetchGeminiWithRetry(endpoint, payload);
+                const text = res.candidates?.[0]?.content?.parts?.[0]?.text;
+                analysisText.innerText = text || "আপনার প্রস্তুতি সন্তোষজনক। যে প্রশ্নগুলো ভুল হয়েছে সেগুলো টেক্সটবুক এবং রিভিশন গাইড থেকে পুনরায় রিভিশন দিন।";
+            } catch (err) {
+                analysisText.innerText = "আপনার প্রস্তুতি সন্তোষজনক। ভুল উত্তরগুলো পুনরায় পর্যবেক্ষণ করুন।";
+            }
+        }
+
+        async function explainWithAI(qIndex, format) {
+            const q = currentQuestions[qIndex];
+            const modal = document.getElementById('explainModal');
+            const modalContent = document.getElementById('explainModalContent');
+
+            modal.classList.remove('hidden');
+            modalContent.innerHTML = `
+                <div class="flex items-center justify-center py-8 text-brand-600">
+                    <i class="fa-solid fa-spinner animate-spin text-2xl mr-2"></i>
+                    <span class="font-bold">IT Cracker AI ডিপ ব্যাখ্যা লোড করছে...</span>
+                </div>
+            `;
+
+            let prompt = "";
+            if (format === 'mcq') {
+                prompt = `Explain this competitive exam question for ${EXAM_NAMES[selectedExamTarget]}:
+Question: ${q.question}
+Correct Answer: ${q.options[q.correctAnswerIndex]}
+
+Provide a clear Bengali explanation with real-world computer science context and why this question frequently appears in BCS/NTRCA/IT exams.`;
+            } else {
+                prompt = `Provide deep exam tips & conceptual breakdown in Bengali for this written question:
+Question: ${q.question}
+Answer: ${q.modelAnswer}
+
+Explain how to write this answer to score full marks in BCS/NTRCA Written Exam.`;
+            }
+
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                const res = await fetchGeminiWithRetry(endpoint, payload);
+                const text = res.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                modalContent.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-brand-50 border border-brand-200 rounded-xl">
+                            <h4 class="font-bold text-brand-900 text-sm mb-1">${q.question}</h4>
+                        </div>
+                        <div class="prose text-slate-700 text-sm leading-relaxed space-y-2">
+                            ${text.replace(/\n/g, '<br>')}
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                modalContent.innerHTML = `<p class="text-red-600 font-bold">ব্যাখ্যা লোড করতে সমস্যা হয়েছে।</p>`;
+            }
+        }
+
+        function closeExplainModal() {
+            document.getElementById('explainModal').classList.add('hidden');
+        }
+
+        async function speakTTS(textToSpeak) {
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: `Say clearly in Bengali: ${textToSpeak}` }] }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } }
+                        }
+                    }
+                };
+
+                const res = await fetchGeminiWithRetry(endpoint, payload);
+                const inlineData = res.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+
+                if (inlineData && inlineData.data) {
+                    const sampleRate = parseSampleRate(inlineData.mimeType) || 24000;
+                    const pcmData = base64ToArrayBuffer(inlineData.data);
+                    const wavBlob = pcmToWav(pcmData, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                } else {
+                    alert("ভয়েস প্লে করতে সমস্যা হয়েছে।");
+                }
+            } catch (err) {
+                console.error("TTS Error:", err);
+                alert("ভয়েস সার্ভিস এই মুহূর্তে ব্যস্ত রয়েছে।");
+            }
+        }
+
+        function parseSampleRate(mimeType) {
+            const match = mimeType?.match(/rate=(\d+)/);
+            return match ? parseInt(match[1], 10) : 24000;
+        }
+
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcmBuffer, sampleRate) {
+            const pcm16 = new Int16Array(pcmBuffer);
+            const numChannels = 1;
+            const bytesPerSample = 2;
+            const blockAlign = numChannels * bytesPerSample;
+            const byteRate = sampleRate * blockAlign;
+            const dataSize = pcm16.length * bytesPerSample;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            const writeString = (offset, string) => {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            };
+
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bytesPerSample * 8, true);
+            writeString(36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            let offset = 44;
+            for (let i = 0; i < pcm16.length; i++, offset += 2) {
+                view.setInt16(offset, pcm16[i], true);
+            }
+
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        function resetApp() {
+            clearInterval(quizTimerInterval);
+            document.getElementById('activeQuizSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('loadingSection').classList.add('hidden');
+            document.getElementById('setupSection').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
