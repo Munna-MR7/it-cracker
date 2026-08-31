@@ -1,12 +1,9 @@
-
-```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>IT Cracker - BCS, NTRCA & IT Exam Prep</title>
-    <meta name="description" content="BCS, NTRCA, Bank and Govt IT Officer Exam Preparation App with AI Engine and Live Leaderboard.">
     
     <!-- Web App / PWA Meta Tags -->
     <meta name="theme-color" content="#075985">
@@ -14,46 +11,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IT Cracker">
+    <meta name="description" content="BCS, NTRCA, Bank & Govt IT Officer Exam Preparation App with AI Quiz and Leaderboard by Mainul Islam Munna">
     
-    <!-- Custom Unique SVG Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>">
-    <link rel="apple-touch-icon" href="https://dummyimage.com/192x192/075985/facc15.png&text=IT">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://img.icons8.com/?size=512&id=vj4NryjE49Hq&format=png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/?size=512&id=vj4NryjE49Hq&format=png">
     
-    <!-- PWA Manifest Dynamic Generation (Store-Ready Config) -->
-    <script>
-        const manifestData = {
-            "name": "IT Cracker PRO",
-            "short_name": "IT Cracker",
-            "description": "Smart ICT Exam Prep app for BCS, NTRCA and Govt Jobs.",
-            "start_url": ".",
-            "display": "standalone",
-            "background_color": "#f8fafc",
-            "theme_color": "#075985",
-            "icons": [
-                {
-                    "src": "https://dummyimage.com/192x192/075985/facc15.png&text=IT",
-                    "sizes": "192x192",
-                    "type": "image/png"
-                },
-                {
-                    "src": "https://dummyimage.com/512x512/075985/facc15.png&text=IT",
-                    "sizes": "512x512",
-                    "type": "image/png"
-                },
-                {
-                    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>",
-                    "sizes": "any",
-                    "type": "image/svg+xml",
-                    "purpose": "any maskable"
-                }
-            ]
-        };
-        const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
-        const manifestLink = document.createElement('link');
-        manifestLink.rel = 'manifest';
-        manifestLink.href = URL.createObjectURL(manifestBlob);
-        document.head.appendChild(manifestLink);
-    </script>
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -325,7 +290,7 @@
                 </div>
             </div>
             <h3 class="text-2xl font-bold text-slate-800">IT Cracker AI পরীক্ষা প্রস্তুত করছে...</h3>
-            <p id="loadingStatusText" class="text-slate-500 text-sm max-w-md mx-auto">নির্বাচিত পরীক্ষা মানদণ্ড ও টপিক বিশ্লেষণ করে মানসম্মত প্রশ্নমালা সংকলন করা হচ্ছে।</p>
+            <p id="loadingStatusText" class="text-slate-500 text-sm max-w-md mx-auto">নির্বাচিত পরীক্ষা মানদণ্ড ও টপিক বিশ্লেষণ করে মানসম্মত প্রশ্নমালা সংকলন করা হচ্ছে.</p>
         </section>
 
         <!-- Active Exam Section -->
@@ -333,7 +298,7 @@
             <!-- Header Bar -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-4">
                 <div class="flex items-center gap-2 flex-wrap">
-                    <span id="activeExamBadge" class="px-3 py-1 bg-amber-100 text-amber-900 rounded-xl text-xs font-bold border border-amber-300">টার্ পরীক্ষা</span>
+                    <span id="activeExamBadge" class="px-3 py-1 bg-amber-100 text-amber-900 rounded-xl text-xs font-bold border border-amber-300">টার্গেট পরীক্ষা</span>
                     <span id="activeChapterBadge" class="px-3 py-1 bg-brand-100 text-brand-900 rounded-xl text-xs font-bold">অধ্যায়</span>
                     <span id="activeTopicBadge" class="px-3 py-1 bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold">টপিক</span>
                 </div>
@@ -650,7 +615,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'it-cracker-v2';
+                    const CACHE_NAME = 'it-cracker-v3';
                     self.addEventListener('install', (event) => {
                         self.skipWaiting();
                     });
