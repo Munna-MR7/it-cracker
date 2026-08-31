@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -15,10 +14,10 @@
     <meta name="description" content="BCS, NTRCA, Bank & Govt IT Officer Exam Preparation App with AI Quiz and Leaderboard by Mainul Islam Munna">
     
     <!-- Clean Favicon Links -->
-    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23075985'/><path d='M50 15 L80 30 V55 C80 72 50 85 50 85 C50 85 20 72 20 55 V30 Z' fill='%230c4a6e' stroke='%23facc15' stroke-width='4'/><path d='M52 28 L36 50 H48 L44 70 L64 45 H52 Z' fill='%23facc15'/></svg>">
     <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg">
     
-    <!-- PWA Manifest -->
+    <!-- PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
 
     <!-- Tailwind CSS -->
@@ -616,7 +615,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'it-cracker-v4';
+                    const CACHE_NAME = 'it-cracker-v5';
                     self.addEventListener('install', (event) => {
                         self.skipWaiting();
                     });
@@ -1016,9 +1015,9 @@
         ];
 
         // ==========================================
-        // আপনার API Key এখানে বসান
+        // আপনার দেওয়া আসল API Key সংযুক্ত করা হলো
         // ==========================================
-        const apiKey = "YOUR_GEMINI_API_KEY_HERE"; 
+        const apiKey = "AQ.Ab8RN6Kr6kT3m9ta_sGYopYFYh3pQarGmtCbGlj6xgTjyeocCA"; 
         
         let selectedExamTarget = 'bcs';
         let currentQuestions = [];
@@ -1217,11 +1216,6 @@
 
             const format = document.querySelector('input[name="formatSelect"]:checked').value;
             const targetExamName = EXAM_NAMES[selectedExamTarget];
-            
-            if (apiKey === "YOUR_GEMINI_API_KEY_HERE" || apiKey.trim() === "") {
-                alert("দুঃখিত, এপিআই কী (API Key) বসানো হয়নি। দয়া করে index.html ফাইলের নিচের দিকে 'const apiKey = ...' এ আপনার এপিআই কীটি বসান।");
-                return;
-            }
 
             document.getElementById('setupSection').classList.add('hidden');
             document.getElementById('loadingSection').classList.remove('hidden');
@@ -1299,7 +1293,7 @@ Sub-Topic: ${topic}`;
             };
 
             try {
-                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${"AQ.Ab8RN6Kr6kT3m9ta_sGYopYFYh3pQarGmtCbGlj6xgTjyeocCA"}`;
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
                 const responseData = await fetchGeminiWithRetry(endpoint, apiPayload);
                 const jsonText = responseData.candidates?.[0]?.content?.parts?.[0]?.text;
                 const parsed = JSON.parse(jsonText);
@@ -1751,4 +1745,3 @@ Explain how to write this answer to score full marks in BCS/NTRCA Written Exam.`
     </script>
 </body>
 </html>
-```
