@@ -1,0 +1,23 @@
+{
+  "name": "IT Cracker PRO",
+  "short_name": "IT Cracker",
+  "description": "Smart ICT Exam Prep app for BCS, NTRCA and Govt Jobs.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#075985",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/?size=192&id=vj4NryjE49Hq&format=png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://img.icons8.com/?size=512&id=vj4NryjE49Hq&format=png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
